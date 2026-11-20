@@ -184,3 +184,8 @@ img{max-width:100%;display:block}ul,ol{margin:0;padding:0;list-style:none}
 .tour-card small{font:700 .74rem var(--fd);color:var(--mar-d)}.tour-card h2{font-size:1.15rem;color:var(--navy)}.tour-card p{color:var(--mut);font-size:.95rem}
 .tour-btns{display:flex;justify-content:space-between;align-items:center;margin-top:8px}.tour-btns span{display:flex;gap:8px}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ---------- ajustes para marcos y pantallas estrechas ---------- */
+.embed .cz-main{scrollbar-width:none}.embed .cz-main::-webkit-scrollbar{display:none}
+.row-main b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:900px){.embed .console{grid-template-columns:minmax(0,1fr)}.embed .sec-grid{grid-template-columns:1fr}}
