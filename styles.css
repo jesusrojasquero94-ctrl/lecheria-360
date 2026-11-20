@@ -1,6 +1,6 @@
 /* Lechería 360 · estilos. Paleta y tipografías tomadas del brandbook de Qiu Agency
    (azul #4087BA, amarillo #F2A31E, Montserrat + Questrial). */
-:root{--navy:#0F2740;--navy2:#17395D;--mar:#4087BA;--mar-d:#2A668F;--mar-l:#E4EFF7;--sol:#F2A31E;--sol-d:#9A6200;--sol-l:#FDF1DA;--sos:#E23D4B;--sos-d:#B4202F;--sos-l:#FCE7E9;--ok:#1B8F68;--ok-l:#DFF3EB;--ink:#14212F;--mut:#586878;--line:#D9E2EB;--bg:#F1F5F9;--card:#fff;--r:14px;--rs:9px;--sh:0 1px 2px rgba(15,39,64,.06),0 10px 26px -14px rgba(15,39,64,.22);--fd:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;--fb:'Questrial','Segoe UI',system-ui,-apple-system,sans-serif}
+:root{--navy:#0A2133;--navy2:#123A5C;--mar:#30A8E0;--mar-d:#1B6CA3;--mar-l:#E3F3FC;--sol:#F2A31E;--sol-d:#9A6200;--sol-l:#FDF1DA;--sos:#E23D4B;--sos-d:#B4202F;--sos-l:#FCE7E9;--ok:#1B8F68;--ok-l:#DFF3EB;--ink:#14212F;--mut:#586878;--line:#D9E2EB;--bg:#F1F5F9;--card:#fff;--r:14px;--rs:9px;--sh:0 1px 2px rgba(15,39,64,.06),0 10px 26px -14px rgba(15,39,64,.22);--fd:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;--fb:'Questrial','Segoe UI',system-ui,-apple-system,sans-serif}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--fb);-webkit-font-smoothing:antialiased}
@@ -190,3 +190,10 @@ img{max-width:100%;display:block}ul,ol{margin:0;padding:0;list-style:none}
 .row-main b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media(max-width:900px){.embed .console{grid-template-columns:minmax(0,1fr)}.embed .sec-grid{grid-template-columns:1fr}}
 html{scroll-behavior:auto}
+
+/* ---------- paleta inspirada en la identidad de Lechería: azul marino, celeste y sol ---------- */
+.hero{background:linear-gradient(160deg,#0A2133 0%,#0B2D47 55%,#0D4A66 100%)}
+.ring{border-color:rgba(48,168,224,.5)}.ring.r2{border-color:rgba(48,168,224,.28)}
+.wordmark b{color:var(--mar-d)}
+.rail nav a.on{color:var(--navy)}.role-seguridad .rail nav a.on{color:#fff}
+.evt-date,.steps li::before{background:var(--navy)}
