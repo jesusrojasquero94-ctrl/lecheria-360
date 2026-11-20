@@ -21,7 +21,7 @@
     <section class="hero"><div class="hero-copy"><p class="hero-kicker">Programa Lechería Ciudad Tecnológica</p><h1>Todo lo que pasa en Lechería, en tu mano.</h1>
       <p class="hero-sub">Una sola app para pedir ayuda con el botón SOS, reportar un hueco con una foto y enterarte de cierres de vía, obras, eventos y noticias. Del otro lado, seguridad, la Alcaldía y los contratistas responden sobre la misma plataforma.</p>
       <div class="btn-row"><button class="btn btn-sol btn-lg" data-act="tour">${ic('play', 18)} Iniciar recorrido guiado</button><a class="btn btn-glass btn-lg" href="#/demo">Ver la alerta viajar en vivo</a></div>
-      <p class="hero-note">Prototipo funcional presentado por Qiu Agency. Usa datos de demostración.</p></div>
+      <p class="hero-note">Propuesta de Qiu Agency para la Alcaldía de Lechería. Prototipo no oficial, con datos de demostración.</p></div>
       <div class="hero-phone" aria-hidden="true"><span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span><div class="phone"><iframe src="?embed=1#/ciudadano/inicio" title="App del ciudadano" loading="lazy" tabindex="-1" allow="geolocation"></iframe></div></div></section>
     <section class="band" id="modulos"><h2>Qué resuelve para la ciudad</h2><p class="band-lead">Siete frentes que hoy viven en llamadas, grupos de mensajería y oficios, reunidos en un solo sistema.</p>
       <dl class="mods">${MODS.map(m => `<div><dt>${ic(m[0], 22)}${m[1]}</dt><dd>${m[2]}</dd></div>`).join('')}</dl></section>
