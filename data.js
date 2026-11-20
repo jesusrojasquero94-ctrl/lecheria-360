@@ -3,9 +3,9 @@
 window.L360 = window.L360 || {};
 
 L360.SECTORS = {
-  'Casco Central': [10.1883, -64.6938], 'Av. Principal': [10.1921, -64.6915], 'Playa Lido': [10.1962, -64.6893],
-  'El Morro': [10.2068, -64.6822], 'Av. Américo Vespucio': [10.2049, -64.6768], 'Playa Los Canales': [10.2128, -64.6731],
-  'Pueblo Viejo': [10.1851, -64.6979], 'Las Villas': [10.1998, -64.6861], 'Cerro El Morro': [10.2215, -64.6987]
+  'Casco Central': [10.1991, -64.6938], 'Av. Principal': [10.1930, -64.6917], 'Playa Lido': [10.2018, -64.6895],
+  'El Morro': [10.1929, -64.6741], 'Av. Américo Vespucio': [10.2001, -64.6822], 'Playa Los Canales': [10.2020, -64.6804],
+  'Pueblo Viejo': [10.1975, -64.6665], 'Las Villas': [10.1885, -64.6714], 'Cerro El Morro': [10.2129, -64.7087]
 };
 
 L360.CATS = {
