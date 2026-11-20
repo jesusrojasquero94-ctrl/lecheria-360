@@ -197,3 +197,4 @@ html{scroll-behavior:auto}
 .wordmark b{color:var(--mar-d)}
 .rail nav a.on{color:var(--navy)}.role-seguridad .rail nav a.on{color:#fff}
 .evt-date,.steps li::before{background:var(--navy)}
+.alert-card{flex-wrap:wrap}.alert-card .row-main{min-width:120px}.alert-card .chip{margin-left:auto}
