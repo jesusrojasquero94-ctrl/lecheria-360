@@ -307,3 +307,39 @@ html.calm *,html.calm *::before,html.calm *::after{animation:none!important;tran
 .cz-main{display:flex;flex-direction:column;gap:20px}.cz-main>*{flex:none}.cz-main:has(.map-full){display:block}.seg{min-height:50px}
 .work-body>.two{margin-bottom:18px}
 .svc-form .check{display:flex;flex-direction:row;gap:8px;align-items:center;font:400 .95rem var(--fb);color:var(--ink)}.svc-form .check input{margin:0}
+
+/* =====================================================================
+   v2.1 · cortes programados, «Escuchar», teléfonos útiles, accesibilidad
+   y panel de la Alcaldía con mejor reparto del espacio
+   ===================================================================== */
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.grid3{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px}
+.info-card h3,.evt-main h3{font-size:1.02rem}.sec-h h2{font-size:1.05rem}.cards .h-sub{font-size:.9rem;color:var(--mut);margin-top:6px}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;flex-wrap:wrap}
+.say{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--navy);font:700 .88rem var(--fd)}
+.say:hover{border-color:var(--mar-d)}.say.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.city-now>.say{margin-top:10px}
+.out-card{border-left:5px solid var(--sol)}.out-card.mine{background:var(--sol-l);border-left-color:#B36B00}
+.out-card header{display:flex;align-items:center;gap:12px;width:100%}.out-card header>span:nth-child(2){flex:1;min-width:0}
+.out-when{display:flex;gap:8px;align-items:center;font:700 1rem var(--fd);color:var(--navy)!important}
+.phone-card header{display:flex;align-items:center;gap:12px;width:100%}.phone-card .btn{margin-top:6px}
+.phone-card.urgent{border:2px solid var(--sos)}
+.out-admin{margin-bottom:26px}.out-admin .card>h3,.out-admin .svc-form>h3{font-size:1.1rem;color:var(--navy)}
+.out-admin .city-list li .btn{flex:none}
+.svc-form select,.svc-form input[type=date],.svc-form input[type=time]{width:100%;padding:11px 12px;border:1.5px solid var(--line);border-radius:var(--rs);background:#fff;font:400 1rem var(--fb);min-height:48px}
+.role-seguridad .rail nav a.on{background:var(--sos-d);color:#fff}
+
+/* panel: ancho máximo cómodo, encabezado fijo y columnas que terminan juntas */
+.work-body{width:100%;max-width:1480px;margin:0 auto}
+.work-h{position:sticky;top:0;z-index:6;background:var(--bg);border-bottom:1px solid transparent}
+.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}
+.two.wide{align-items:stretch}.two.wide>.card{display:flex;flex-direction:column}.two.wide .map-box{flex:1;min-height:360px;height:auto}
+.two{align-items:stretch}.two>.card{height:100%}
+.dash-grid{align-items:stretch}.dash-grid>.card{height:100%}
+.two>.card,.dash-grid>.card{align-content:start}
+@media(max-width:1200px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){.work-h{position:static}.grid3{grid-template-columns:1fr 1fr}.grid3 label:first-child{grid-column:1/-1}}
+@media(max-width:520px){.kpis{grid-template-columns:1fr}.kpi b{font-size:1.8rem}.dash-quick{grid-template-columns:1fr}}
+html.hc .say{outline:2px solid #1E2B38}
+.skip{position:absolute;left:12px;top:-80px;z-index:100;background:var(--navy);color:#fff;border:0;padding:12px 18px;border-radius:999px;font:700 1rem var(--fd)}.skip:focus{top:12px}
+.btn-sos{background:var(--sos-d)}.btn-sos:hover{background:#8E1724}

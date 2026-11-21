@@ -3,7 +3,7 @@
 **Lechería Conecta · Sistema Integral de Gestión Urbana** (antes «Lechería 360») es la plataforma propuesta
 por Qiu Agency para que vecinos, Alcaldía, Seguridad y Protección Civil y contratistas trabajen sobre los mismos datos.
 
-Última actualización: noviembre de 2026.
+Última actualización: 21 de noviembre de 2026.
 
 ---
 
@@ -39,6 +39,16 @@ por Qiu Agency para que vecinos, Alcaldía, Seguridad y Protección Civil y cont
 - [x] **Funciona sin internet**: la app, los mapas ya vistos y las tipografías quedan guardados; los reportes y alertas SOS enviados sin señal salen solos al volver la conexión y, mientras tanto, se destaca la llamada al 911.
 - [x] **Accesibilidad para mayores de 50**: letra base más grande, selector «Ver mejor» (tres tamaños de letra, alto contraste, menos animaciones) guardado en el dispositivo, áreas táctiles de 48 px, contraste AA revisado y textos más claros.
 - [x] Recorrido guiado ampliado con el estado de la ciudad.
+
+## Fase 1.1 · Mejoras de la versión 2.1 (terminada)
+
+- [x] Cortes programados de luz y agua por sector, con recordatorio 30 minutos antes.
+- [x] Botón «Escuchar» para leer en voz alta avisos y noticias.
+- [x] Teléfonos útiles disponibles sin internet.
+- [x] Panel de la Alcaldía con encabezado fijo, indicadores en una fila y columnas alineadas.
+- [x] Auditoría automática de accesibilidad (axe-core, WCAG 2.2 AA) sin hallazgos en 23 pantallas.
+
+El plan técnico y el presupuesto detallado de la fase 2 están en el documento «Lechería Conecta · Plan técnico y presupuesto de la fase 2 (piloto real)».
 
 ## Fase 2 · Piloto real (0 a 3 meses)
 
