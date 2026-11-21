@@ -1,4 +1,4 @@
-/* Lechería 360 · datos de demostración. Todo el contenido es ficticio.
+/* Lechería Conecta · datos de demostración. Todo el contenido es ficticio.
    Desarrollado por Qiu Agency de Qiu Capital Group C.A. · RIF J-50880192-0 */
 window.L360 = window.L360 || {};
 
@@ -27,13 +27,17 @@ L360.STYPES = {
 };
 L360.NEWSCATS = ['Gestión', 'Cultura', 'Política', 'Social', 'Deporte', 'Turismo'];
 L360.ROADKINDS = { cierre: 'Cierre', desvio: 'Desvío', trafico: 'Tránsito lento', accidente: 'Accidente' };
+/* Estado de la ciudad: [etiqueta, tono]. El tono nunca va solo: siempre lo acompaña la palabra y un icono. */
+L360.SVC = { ok: ['Normal', 'ok'], parcial: ['Con fallas', 'warn'], corte: ['Interrumpido', 'bad'] };
+L360.WIFI = { activo: ['Funcionando', 'ok'], lento: ['Lento', 'warn'], caido: ['Sin servicio', 'bad'] };
+L360.BEACH = { abierta: ['Abierta', 'ok'], precaucion: ['Precaución', 'warn'], cerrada: ['Cerrada', 'bad'] };
 
 L360.seed = function () {
   const H = 3600e3, D = 24 * H, t = Date.now();
   const day = n => new Date(t + n * D).toISOString().slice(0, 10);
   const S = L360.SECTORS, at = (s, dx = 0, dy = 0) => ({ sector: s, lat: S[s][0] + dx, lng: S[s][1] + dy });
   return {
-    v: 3, seq: { rep: 1046, sos: 212, req: 31 },
+    v: 5, seq: { rep: 1046, sos: 212, req: 31 },
     me: { name: 'María González', phone: '0414 555 0101', sector: 'Casco Central', contact: 'Luis González · 0424 555 0102' },
     sos: [
       { id: 'SOS-211', type: 'medica', name: 'Carlos Rivas', phone: '0412 555 0144', ...at('Playa Lido', .0008), ts: t - 26 * H, status: 'atendida', unit: 'u4', op: 'Op. Andrea Salazar', t1: t - 26 * H + 40e3, t2: t - 26 * H + 95e3, t3: t - 26 * H + 11 * 60e3,
@@ -100,6 +104,24 @@ L360.seed = function () {
       { id: 'u4', name: 'Ambulancia A-01', kind: 'Salud', status: 'disponible', ...at('Av. Principal', -.0009) },
       { id: 'u5', name: 'Unidad PC-01', kind: 'Protección Civil', status: 'disponible', ...at('Las Villas', .0006) },
       { id: 'u6', name: 'Bomberos B-01', kind: 'Bomberos', status: 'disponible', ...at('Av. Américo Vespucio', .0008) }
+    ],
+    services: [
+      { id: 'agua', n: 'Agua potable', i: 'drop', prov: 'Hidrocaribe', status: 'parcial', sectors: ['Pueblo Viejo', 'Las Villas'], note: 'Suministro por horario en Pueblo Viejo y Las Villas por mantenimiento de la estación de bombeo.', next: 'Normalización estimada: mañana a las 6:00 a. m.', ts: t - 3 * H },
+      { id: 'luz', n: 'Electricidad', i: 'bolt', prov: 'Corpoelec', status: 'ok', sectors: [], note: 'Servicio estable en todos los sectores. La cuadrilla municipal sustituyó un transformador en el Casco Central.', next: '', ts: t - 7 * H },
+      { id: 'aseo', n: 'Recolección de desechos', i: 'trash', prov: 'Aseo Urbano municipal', status: 'ok', sectors: [], note: 'Hoy el camión pasa por el Casco Central, la Av. Principal y El Morro. Saca la basura antes de las 7:00 p. m.', next: '', ts: t - 5 * H }
+    ],
+    beaches: [
+      { id: 'b1', n: 'Playa Lido', status: 'abierta', note: 'Bandera verde. Salvavidas de 8:00 a. m. a 5:00 p. m.', ts: t - 2 * H },
+      { id: 'b2', n: 'Playa Los Canales', status: 'precaucion', note: 'Oleaje moderado. Báñate solo frente a la torre de salvavidas.', ts: t - 4 * H },
+      { id: 'b3', n: 'Playa Cangrejo', status: 'cerrada', note: 'Cerrada de forma preventiva por manchas de hidrocarburo en la orilla. Protección Civil vigila la costa.', ts: t - 6 * H }
+    ],
+    wifi: [
+      { id: 'wf1', n: 'Plaza Bolívar de Lechería', ...at('Casco Central', .0004, -.0003), status: 'activo', power: true, hours: 'Todo el día', yes: 41, no: 3 },
+      { id: 'wf2', n: 'Sede de la Alcaldía (Atención al Ciudadano)', ...at('Av. Principal', .0003, .0006), status: 'activo', power: true, hours: '7:00 a. m. a 6:00 p. m.', yes: 28, no: 1 },
+      { id: 'wf3', n: 'Bulevar de Playa Lido', ...at('Playa Lido', -.0003), status: 'lento', power: false, hours: '6:00 a. m. a 10:00 p. m.', yes: 17, no: 9 },
+      { id: 'wf4', n: 'Casa de la Cultura', ...at('El Morro', -.0005, .0006), status: 'activo', power: true, hours: '8:00 a. m. a 8:00 p. m.', yes: 22, no: 2 },
+      { id: 'wf5', n: 'Paseo Colón', ...at('Av. Américo Vespucio', .0006, -.0008), status: 'caido', power: false, hours: 'Todo el día', yes: 6, no: 14 },
+      { id: 'wf6', n: 'Plaza de Pueblo Viejo', ...at('Pueblo Viejo', -.0004, .0002), status: 'activo', power: true, hours: '6:00 a. m. a 10:00 p. m.', yes: 19, no: 2 }
     ],
     notifs: []
   };
