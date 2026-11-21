@@ -1,7 +1,10 @@
-# Lechería 360
+# Lechería Conecta · Sistema Integral de Gestión Urbana
 
-Prototipo funcional de la plataforma ciudadana del programa **Lechería Ciudad Tecnológica**:
+(Antes «Lechería 360».) Prototipo funcional de la plataforma ciudadana del programa **Lechería Ciudad Tecnológica**:
 una app instalable (PWA) para los vecinos y tres portales de gestión que trabajan sobre los mismos datos.
+Funciona sin internet y está pensada también para personas de 50 años o más.
+
+La hoja de ruta completa está en [ROADMAP.md](ROADMAP.md).
 
 > Sitio desarrollado por **Qiu Agency** de Qiu Capital Group C.A. · RIF: J-50880192-0
 >
@@ -13,19 +16,29 @@ una app instalable (PWA) para los vecinos y tres portales de gestión que trabaj
 | Portal | Ruta | Para quién | Funciones |
 | --- | --- | --- | --- |
 | Portada | `#/` | Presentación | Resumen, acceso a portales, recorrido guiado y vista en vivo |
-| Ciudadano | `#/ciudadano` | Vecinos y visitantes | Botón SOS con ubicación, reportes con foto, seguimiento y calificación, noticias, eventos, obras, vialidad, sucesos, mapa y perfil |
+| Ciudadano | `#/ciudadano` | Vecinos y visitantes | Botón SOS con ubicación, reportes con foto, estado del agua, la luz, el aseo y las playas, alerta cuando hay un corte en su sector, WiFi público cercano, noticias, eventos, obras, vialidad, sucesos, mapa, notificaciones del teléfono y perfil |
 | Seguridad | `#/seguridad` | Operadores y Protección Civil | Cola de alertas SOS en vivo con sonido, mapa, despacho de la unidad más cercana, bitácora, unidades y publicación de sucesos |
-| Alcaldía | `#/alcaldia` | Direcciones y prensa | Panel de indicadores, gestión de reportes, solicitudes a contratistas, adjudicación, publicaciones y directorio de proveedores |
+| Alcaldía | `#/alcaldia` | Direcciones y prensa | Panel de la ciudad (resumen del día, «Necesita su atención», indicadores, estado de la ciudad, mapa, sectores y obras), estado de servicios, playas y WiFi, gestión de reportes, solicitudes a contratistas, adjudicación, publicaciones y directorio de proveedores |
 | Contratistas | `#/contratista` | Empresas y aliados privados | Solicitudes de obras, servicios y eventos, cotización, avances con evidencia fotográfica |
 | Vista en vivo | `#/demo` | Presentación | Teléfono del vecino y consola de gestión en la misma pantalla |
 
-El **recorrido guiado** (botón en la portada y en cada portal) ejecuta el ciclo completo en 16 pasos:
-alerta SOS, despacho, reporte con foto, solicitud, cotización, adjudicación, avance y calificación.
+El **recorrido guiado** (botón en la portada y en cada portal) ejecuta el ciclo completo en 18 pasos:
+alerta SOS, despacho, reporte con foto, solicitud, cotización, adjudicación, avance, calificación,
+estado de la ciudad, WiFi y panel de la Alcaldía.
+
+## Novedades de la versión 2
+
+- **Panel de la Alcaldía rediseñado**: saludo con el resumen del día en una frase, accesos rápidos, lista «Necesita su atención» con un botón por tarea, indicadores grandes (incluido el tiempo medio de solución), estado de la ciudad, sectores con más reportes y obras con fecha de entrega.
+- **Estado de la ciudad**: agua, electricidad y recolección de desechos (Normal, Con fallas, Interrumpido) con los sectores afectados; playas (abierta, precaución, cerrada); puntos WiFi públicos.
+- **Alertas por sector**: si un corte afecta el sector del vecino, ve una franja roja en el inicio y, si activa las notificaciones en su perfil, le llega un aviso al teléfono mientras la app esté abierta o en segundo plano (con la app cerrada requiere el servidor de notificaciones push de la fase 2).
+- **WiFi cerca**: puntos públicos ordenados por distancia, con horario, planta eléctrica, «Cómo llegar» y confirmación de los vecinos. Un navegador no puede escanear redes WiFi; en Android con Chrome la app indica si el teléfono está conectado por WiFi.
+- **Sin internet**: el service worker guarda la app, Leaflet, las tipografías y hasta 600 teselas de mapa ya vistas. Los reportes y las alertas SOS que se envían sin señal quedan guardados y salen solos al volver la conexión; mientras tanto se destaca la llamada al 911. En Perfil hay un interruptor «Simular sin conexión» para la demostración.
+- **Accesibilidad para mayores de 50**: letra base de 17 px, botón «Ver mejor» (Normal, Grande o Muy grande, alto contraste y menos movimiento) guardado en el dispositivo, áreas táctiles de 48 px, estados siempre con palabra e icono, y contraste AA revisado.
 
 ## Cómo funciona este prototipo
 
 - HTML, CSS y JavaScript sin dependencias de compilación. Mapas con Leaflet y OpenStreetMap.
-- Los datos se guardan en el navegador (`localStorage`) y se sincronizan al instante entre pestañas
+- Los datos se guardan en el navegador (`localStorage`, clave `lchc:v5`) y se sincronizan al instante entre pestañas
   y ventanas del mismo navegador. Por eso un SOS enviado en una pestaña aparece en la consola abierta en otra.
 - La sincronización entre dispositivos distintos requiere el backend descrito en el plan del proyecto
   (API, base de datos, notificaciones push). `core.js` concentra todas las acciones de negocio para
@@ -42,7 +55,8 @@ core.js                 Almacén, acciones de negocio, mapa, utilidades y enruta
 ciudadano.js            Portal del ciudadano
 gestion.js              Seguridad, Alcaldía y Contratistas
 landing.js              Portada, vista en vivo y recorrido guiado
-sw.js                   Service worker (uso sin conexión)
+sw.js                   Service worker: uso sin conexión, mapas guardados y notificaciones
+ROADMAP.md              Hoja de ruta por fases
 manifest.webmanifest    Manifiesto de la app instalable
 ```
 
@@ -52,7 +66,7 @@ manifest.webmanifest    Manifiesto de la app instalable
 python3 -m http.server 8080
 ```
 
-y abrir `http://localhost:8080`.
+y abrir `http://localhost:8080`. El service worker (uso sin conexión y notificaciones) solo se activa en `https` o en `localhost`.
 
 ## Alianzas previstas
 

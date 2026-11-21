@@ -1,4 +1,4 @@
-/* Lechería 360 · portada, vista en vivo y recorrido guiado. */
+/* Lechería Conecta · portada, vista en vivo y recorrido guiado. */
 (() => {
   const A = window.L360, { esc, ic, act, on, views, $ } = A;
   const PORTALS = [
@@ -13,26 +13,36 @@
     ['cone', 'Vialidad', 'Cierres, desvíos y accidentes publicados por la Alcaldía, con vías alternas.'],
     ['helmet', 'Obras', 'Cada obra con su avance, contratista, inversión y fecha de entrega a la vista de todos.'],
     ['calendar', 'Eventos', 'Agenda cultural, deportiva y social. La taquilla y las reservas se integran con Nightz.'],
+    ['city', 'Estado de la ciudad', 'Agua, luz, aseo y playas con su estado del día. Si hay un corte en tu sector, te llega una alerta al teléfono.'],
+    ['wifi', 'WiFi público y sin conexión', 'Mapa de puntos WiFi gratis, con los que siguen funcionando en apagones. La app funciona sin internet y envía lo pendiente al volver la señal.'],
     ['news', 'Noticias y sucesos', 'Lo cultural, lo político y lo social de la ciudad, contado por la fuente oficial y verificado.'],
     ['case', 'Contratistas', 'La Alcaldía y los aliados privados envían solicitudes; el contratista cotiza y rinde cuentas en línea.']
   ];
+  const ROAD = [
+    ['Terminado', 'Prototipo v1', 'App del vecino, consolas de Seguridad, Alcaldía y Contratistas, y recorrido guiado.'],
+    ['Esta entrega', 'Lechería Conecta v2', 'Panel de la Alcaldía accesible, estado de agua, luz y playas, WiFi público, uso sin internet y alertas por sector.'],
+    ['0 a 3 meses', 'Piloto real', 'Servidor y base de datos, cuentas verificadas, SMS y WhatsApp, enlace con el 911 y Protección Civil.'],
+    ['3 a 12 meses', 'Trámites y participación', 'Solvencia, impuestos y citas en línea, transparencia de obras y presupuesto participativo.']
+  ];
   views.inicio = () => `<div class="land">
-    <header class="land-nav"><a class="wordmark" href="#/">Lechería <b>360</b></a><nav aria-label="Principal"><button data-act="scrollTo" data-to="modulos">Qué incluye</button><button data-act="scrollTo" data-to="portales">Portales</button><a href="#/demo">Vista en vivo</a></nav><button class="btn btn-sol btn-sm" data-act="tour">Recorrido guiado</button></header>
-    <section class="hero"><div class="hero-copy"><p class="hero-kicker">Programa Lechería Ciudad Tecnológica</p><h1>Todo lo que pasa en Lechería, en tu mano.</h1>
-      <p class="hero-sub">Una sola app para pedir ayuda con el botón SOS, reportar un hueco con una foto y enterarte de cierres de vía, obras, eventos y noticias. Del otro lado, seguridad, la Alcaldía y los contratistas responden sobre la misma plataforma.</p>
+    <header class="land-nav"><a class="wordmark" href="#/">Lechería <b>Conecta</b></a><nav aria-label="Principal"><button data-act="scrollTo" data-to="modulos">Qué incluye</button><button data-act="scrollTo" data-to="portales">Portales</button><button data-act="scrollTo" data-to="ruta">Hoja de ruta</button><a href="#/demo">Vista en vivo</a></nav><button class="btn btn-sol btn-sm" data-act="tour">Recorrido guiado</button></header>
+    <section class="hero"><div class="hero-copy"><p class="hero-kicker">Lechería Conecta · Sistema Integral de Gestión Urbana</p><h1>Todo lo que pasa en Lechería, en tu mano.</h1>
+      <p class="hero-sub">Una sola app para pedir ayuda con el botón SOS, reportar un hueco con una foto, saber si hay agua, luz o playa abierta, y encontrar WiFi gratis, incluso sin internet. Del otro lado, seguridad, la Alcaldía y los contratistas responden sobre la misma plataforma.</p>
       <div class="btn-row"><button class="btn btn-sol btn-lg" data-act="tour">${ic('play', 18)} Iniciar recorrido guiado</button><a class="btn btn-glass btn-lg" href="#/demo">Ver la alerta viajar en vivo</a></div>
       <p class="hero-note">Propuesta de Qiu Agency para la Alcaldía de Lechería. Prototipo no oficial, con datos de demostración.</p></div>
       <div class="hero-phone" aria-hidden="true"><span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span><div class="phone"><iframe src="?embed=1#/ciudadano/inicio" title="App del ciudadano" loading="lazy" tabindex="-1" allow="geolocation"></iframe></div></div></section>
-    <section class="band" id="modulos"><h2>Qué resuelve para la ciudad</h2><p class="band-lead">Siete frentes que hoy viven en llamadas, grupos de mensajería y oficios, reunidos en un solo sistema.</p>
+    <section class="band" id="modulos"><h2>Qué resuelve para la ciudad</h2><p class="band-lead">Nueve frentes que hoy viven en llamadas, grupos de mensajería y oficios, reunidos en un solo sistema pensado también para quienes tienen más de 50 años: letra grande, botones grandes y lenguaje claro.</p>
       <dl class="mods">${MODS.map(m => `<div><dt>${ic(m[0], 22)}${m[1]}</dt><dd>${m[2]}</dd></div>`).join('')}</dl></section>
     <section class="band flow"><h2>El viaje de un reporte</h2><ol class="steps"><li><b>El vecino reporta</b><span>Foto, tipo de problema y ubicación en menos de un minuto.</span></li><li><b>La Alcaldía asigna</b><span>A la dirección responsable o a un contratista invitado a cotizar.</span></li><li><b>El contratista ejecuta</b><span>Cotiza, recibe la adjudicación y sube avances con fotos.</span></li><li><b>El vecino califica</b><span>Recibe el aviso de solución y evalúa la atención.</span></li></ol></section>
     <section class="band" id="portales"><h2>Cuatro portales, una sola ciudad</h2><p class="band-lead">Entra a cualquiera. Lo que hagas en uno se refleja al instante en los demás.</p>
       <div class="portals">${PORTALS.map(p => `<a class="portal p-${p[0]}" href="#/${p[0]}"><span class="portal-ic">${ic(p[1], 26)}</span><h3>${p[2]}</h3><small>${p[3]}</small><p>${p[4]}</p><span class="portal-go">Entrar al portal</span></a>`).join('')}</div></section>
+    <section class="band" id="ruta"><h2>Hoja de ruta</h2><p class="band-lead">De prototipo a sistema oficial en cuatro etapas.</p>
+      <ol class="road">${ROAD.map((r, i) => `<li class="${i < 2 ? 'done' : ''}"><small>${r[0]}</small><b>${r[1]}</b><span>${r[2]}</span></li>`).join('')}</ol></section>
     <section class="band live-cta"><div><h2>Presiona SOS y mira quién responde</h2><p>La vista en vivo pone el teléfono del vecino junto a la consola del operador. Es la forma más rápida de entender el sistema.</p></div><a class="btn btn-sol btn-lg" href="#/demo">Abrir la vista en vivo</a></section>
     ${A.credit()}</div>`;
 
   let side = 'seguridad';
-  views.demo = () => `<div class="demo"><header class="demo-h"><a class="wordmark" href="#/">Lechería <b>360</b></a><p>Presiona <b>SOS</b> o envía un reporte en el teléfono y mira cómo llega al otro lado.</p>
+  views.demo = () => `<div class="demo"><header class="demo-h"><a class="wordmark" href="#/">Lechería <b>Conecta</b></a><p>Presiona <b>SOS</b> o envía un reporte en el teléfono y mira cómo llega al otro lado.</p>
     <div class="seg dark" role="tablist">${[['seguridad', 'Seguridad'], ['alcaldia', 'Alcaldía'], ['contratista', 'Contratistas']].map(([k, n]) => `<button role="tab" aria-selected="${k === side}" class="${k === side ? 'on' : ''}" data-act="side" data-k="${k}">${n}</button>`).join('')}</div><a class="btn btn-glass btn-sm" href="#/">Salir</a></header>
     <div class="demo-stage"><div class="phone"><iframe src="?embed=1#/ciudadano/inicio" title="App del ciudadano" allow="geolocation"></iframe></div><div class="screen"><iframe id="demoR" src="?embed=1#/${side}" title="Consola de gestión"></iframe></div></div></div>`;
   on.side = el => { side = el.dataset.k; document.querySelectorAll('.demo .seg button').forEach(b => { b.classList.toggle('on', b === el); b.setAttribute('aria-selected', b === el); }); $('#demoR').src = '?embed=1#/' + side; };
@@ -47,7 +57,7 @@
     x.fillStyle = 'rgba(15,39,64,.82)'; x.fillRect(0, 356, 640, 44); x.fillStyle = '#fff'; x.font = '600 18px Montserrat, sans-serif'; x.fillText(fixed ? 'Foto de demostración · bacheo terminado' : 'Foto de demostración · hueco en la vía', 18, 384); return c.toDataURL('image/jpeg', .7); };
   const d = {}; // datos creados durante el recorrido
   const STEPS = [
-    { go: '#/', t: 'Bienvenidos a Lechería 360', x: 'En unos tres minutos verás cómo vecinos, seguridad, Alcaldía y contratistas trabajan sobre la misma plataforma. Nada es una maqueta: cada paso crea datos reales dentro del prototipo. Al empezar se restauran los datos de ejemplo.' },
+    { go: '#/', t: 'Bienvenidos a Lechería Conecta', x: 'En unos tres minutos verás cómo vecinos, seguridad, Alcaldía y contratistas trabajan sobre la misma plataforma. Nada es una maqueta: cada paso crea datos reales dentro del prototipo. Al empezar se restauran los datos de ejemplo.' },
     { go: '#/ciudadano/inicio', sel: '.sos-btn', t: 'El vecino tiene un botón de pánico', x: 'Un toque, elige el tipo de emergencia y la alerta sale con su ubicación y sus datos de contacto.' },
     { run: async () => { d.sos = await A.demo.sos('seguridad'); }, go: '#/ciudadano/sos', sel: '.sos-live h2', t: 'La alerta ya salió', x: 'Acabamos de enviar una alerta de seguridad. El vecino ve el estado en vivo y un mapa con su ubicación.' },
     { go: '#/seguridad/alertas', sel: '.alert-card.on', t: 'Llega al Centro de Seguridad al instante', x: 'Suena una alarma y aparece en el mapa con nombre, teléfono y ubicación. El operador de turno toma el caso.' },
@@ -61,8 +71,10 @@
     { run: () => { const w = A.S.works.find(w => w.request === d.req); act.workUpdate(w.id, { pct: 100, txt: 'Hueco reparado y canal demarcado.', photo: demoPhoto(true) }); }, go: () => '#/ciudadano/reportes/' + d.rep, sel: '.rate', t: 'El vecino recibe la solución y califica', x: 'El ciclo se cierra: el reporte queda resuelto, con su historial completo, y la calificación alimenta el indicador de satisfacción.' },
     { go: '#/ciudadano/ciudad/eventos', sel: '.evt', t: 'La vida de la ciudad en un solo lugar', x: 'Noticias, eventos, obras, vialidad y sucesos verificados. Los eventos con taquilla se conectan con Nightz para entradas y reservas.' },
     { go: '#/alcaldia/publicar', sel: 'form.card', t: 'La Alcaldía publica sin intermediarios', x: 'Noticias culturales, políticas y sociales, eventos y avisos de vialidad salen de aquí y llegan como notificación al teléfono de cada vecino.' },
-    { go: '#/alcaldia/panel', sel: '.kpis', t: 'Indicadores para decidir', x: 'Reportes abiertos, tiempos de respuesta a emergencias y satisfacción vecinal, actualizados con cada acción que viste en este recorrido.' },
-    { go: '#/', t: 'Eso es Lechería 360', x: 'Ahora entra a cualquier portal y pruébalo por tu cuenta, o abre la vista en vivo para tener el teléfono del vecino y la consola del operador en la misma pantalla.', end: true }
+    { go: '#/alcaldia/servicios', sel: '.svc-grid', t: 'Agua, luz, aseo, playas y WiFi', x: 'La Alcaldía publica el estado de cada servicio y los sectores afectados. Los vecinos de esos sectores reciben una alerta destacada en el teléfono.' },
+    { go: '#/ciudadano/wifi', sel: '.wifi-card', t: 'WiFi gratis y uso sin internet', x: 'El vecino ve los puntos WiFi más cercanos y cuáles tienen planta eléctrica. Si no hay señal, la app sigue funcionando y envía lo pendiente al volver la conexión.' },
+    { go: '#/alcaldia/panel', sel: '.todo', t: 'Un panel que dice qué hacer', x: 'Saludo con el resumen del día, la lista de tareas pendientes con un botón para cada una e indicadores grandes, fáciles de leer a cualquier edad.' },
+    { go: '#/', t: 'Eso es Lechería Conecta', x: 'Ahora entra a cualquier portal y pruébalo por tu cuenta, o abre la vista en vivo para tener el teléfono del vecino y la consola del operador en la misma pantalla.', end: true }
   ];
   const T = A.tour = { i: -1, box: null, tm: 0,
     start() { act.reset(); delete sessionStorage.l360sos; Object.keys(d).forEach(k => delete d[k]); STEPS.forEach(s => { s.ran = false; }); A.closeModal(); this.i = 0;
