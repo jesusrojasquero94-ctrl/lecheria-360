@@ -35,10 +35,19 @@ estado de la ciudad, WiFi y panel de la Alcaldía.
 - **Sin internet**: el service worker guarda la app, Leaflet, las tipografías y hasta 600 teselas de mapa ya vistas. Los reportes y las alertas SOS que se envían sin señal quedan guardados y salen solos al volver la conexión; mientras tanto se destaca la llamada al 911. En Perfil hay un interruptor «Simular sin conexión» para la demostración.
 - **Accesibilidad para mayores de 50**: letra base de 17 px, botón «Ver mejor» (Normal, Grande o Muy grande, alto contraste y menos movimiento) guardado en el dispositivo, áreas táctiles de 48 px, estados siempre con palabra e icono, y contraste AA revisado.
 
+## Novedades de la versión 2.1
+
+- **Cortes programados**: la Alcaldía programa cortes de luz o agua por sector, día y hora. El vecino del sector lo ve en su inicio («Hoy en tu sector») y recibe un recordatorio 30 minutos antes.
+- **Escuchar**: botón de lectura en voz alta en avisos de servicios, playas, cortes, noticias y el resumen «Así está Lechería hoy».
+- **Teléfonos útiles**: directorio que funciona sin internet. Solo el 911 es un número real; el resto se publica cuando la Alcaldía lo confirme.
+- **Panel de la Alcaldía**: encabezado fijo al desplazarse, ancho máximo cómodo en pantallas grandes, cuatro indicadores en una fila, columnas que terminan a la misma altura y cortes programados en «Estado de la ciudad».
+- **Accesibilidad**: 23 pantallas revisadas con axe-core (WCAG 2.2 AA y buenas prácticas) sin hallazgos; regiones de página, títulos en orden, enlace «Saltar al contenido» y contraste corregido en los botones de emergencia.
+- **Carga**: la hoja de estilos de los mapas ya no bloquea el primer dibujo de la página.
+
 ## Cómo funciona este prototipo
 
 - HTML, CSS y JavaScript sin dependencias de compilación. Mapas con Leaflet y OpenStreetMap.
-- Los datos se guardan en el navegador (`localStorage`, clave `lchc:v5`) y se sincronizan al instante entre pestañas
+- Los datos se guardan en el navegador (`localStorage`, clave `lchc:v6`) y se sincronizan al instante entre pestañas
   y ventanas del mismo navegador. Por eso un SOS enviado en una pestaña aparece en la consola abierta en otra.
 - La sincronización entre dispositivos distintos requiere el backend descrito en el plan del proyecto
   (API, base de datos, notificaciones push). `core.js` concentra todas las acciones de negocio para

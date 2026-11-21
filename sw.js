@@ -3,7 +3,7 @@
    - Páginas y código propio: red primero y, si no hay señal, la copia guardada.
    - Mapas, tipografías y Leaflet: copia guardada primero y se renueva en segundo plano.
    Los teselas de mapa ya vistas quedan disponibles sin conexión (máximo 600). */
-const C = 'lchc-v2', T = 'lchc-mapas-v1', MAX_TILES = 600;
+const C = 'lchc-v3', T = 'lchc-mapas-v1', MAX_TILES = 600;
 const SHELL = ['./', 'index.html', 'styles.css', 'data.js', 'core.js', 'ciudadano.js', 'gestion.js', 'landing.js', 'icon.svg', 'manifest.webmanifest'];
 const CDN = ['https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'];
 self.addEventListener('install', e => { self.skipWaiting(); e.waitUntil(caches.open(C).then(c => c.addAll(SHELL).then(() => Promise.all(CDN.map(u => fetch(u, { mode: 'no-cors' }).then(r => c.put(u, r)).catch(() => {}))))).catch(() => {})); });

@@ -2,7 +2,7 @@
    Los datos viven en el navegador (localStorage) y se sincronizan entre pestañas.
    En producción, este archivo se conecta a la API descrita en el plan. */
 (() => {
-  const A = window.L360, KEY = 'lchc:v5', PK = 'lchc:prefs';
+  const A = window.L360, KEY = 'lchc:v6', PK = 'lchc:prefs';
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -30,7 +30,7 @@
     drop: 'M12 3s6 6.500 6 11a6 6 0 0 1-12 0c0-4.500 6-11 6-11z', tree: 'M12 21v-6M12 15a5 5 0 0 1-4-8 4 4 0 0 1 8 0 5 5 0 0 1-4 8z', grid: 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z',
     bolt: 'M13 2L4 14h7l-1 8 9-12h-7z', wave: 'M2 10c2.500 0 2.500-2 5-2s2.500 2 5 2 2.500-2 5-2 2.500 2 5 2M2 16c2.500 0 2.500-2 5-2s2.500 2 5 2 2.500-2 5-2 2.500 2 5 2', type: 'M4 7V5h11v2M9.500 5v14M7 19h5M14 12v-1h7v1M17.500 11v8M16 19h3',
     info: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 11v6M12 7.500v.500', arrow: 'M5 12h14M13 6l6 6-6 6', city: 'M3 21h18M5 21V8l6-4v17M11 21V10h8v11M8 10v.5M8 14v.5M8 18v.5M14 13h2M14 17h2', contrast: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 3v18',
-    wifi: 'M2 9a15 15 0 0 1 20 0M5 12.500a10 10 0 0 1 14 0M8.500 16a5 5 0 0 1 7 0M12 19.500v.500', off: 'M3 3l18 18M8.500 16a5 5 0 0 1 7 0M5 12.500a10 10 0 0 1 4-2.300M2 9a15 15 0 0 1 4.500-2.900M14 8.300a10 10 0 0 1 5 4.200M12 19.500v.500', plug: 'M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4'
+    wifi: 'M2 9a15 15 0 0 1 20 0M5 12.500a10 10 0 0 1 14 0M8.500 16a5 5 0 0 1 7 0M12 19.500v.500', off: 'M3 3l18 18M8.500 16a5 5 0 0 1 7 0M5 12.500a10 10 0 0 1 4-2.300M2 9a15 15 0 0 1 4.500-2.900M14 8.300a10 10 0 0 1 5 4.200M12 19.500v.500', plug: 'M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4', sound: 'M4 9v6h4l5 4V5L8 9zM16 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12', stop: 'M7 7h10v10H7z'
   };
   const ic = (n, s = 20) => `<svg class="ic" viewBox="0 0 24 24" width="${s}" height="${s}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${IC[n] || IC.plus}"/></svg>`;
   const qiu = (h = 18) => `<svg class="qiu" viewBox="0 0 168 100" height="${h}" role="img" aria-label="Qiu"><path fill-rule="evenodd" d="M38.1 10.6a38.1 36.4 0 1 0 0 72.8a38.1 36.4 0 1 0 0-72.8zm0 18.9a17.3 17.3 0 1 1 0 34.6a17.3 17.3 0 1 1 0-34.6z"/><path d="M34 76q7 16 16.6 22q3.4 2 6.4 2h14.3V85.3H64q-7-.3-7.700-7.300l-6-6zM83.900 28.500h18.800v52.900H83.900zM113.100 28.500H133V59q0 7.500 7.700 7.500t7.700-7.500V28.500h19.300v52.900H154l-2-4.600q-6 6.400-16.500 6.400q-22.400 0-22.400-21.200z"/><circle cx="93.600" cy="11.400" r="11.500"/></svg>`;
@@ -42,6 +42,9 @@
   const money = n => 'US$ ' + Number(n || 0).toLocaleString('es-VE');
   const flong = (ts = now()) => { const d = new Date(ts).toLocaleDateString('es-VE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }); return d.charAt(0).toUpperCase() + d.slice(1); };
   const greet = () => { const h = new Date().getHours(); return h < 12 ? 'Buenos días' : h < 19 ? 'Buenas tardes' : 'Buenas noches'; };
+  const hm = ts => new Date(ts).toLocaleTimeString('es-VE', { hour: 'numeric', minute: '2-digit' });
+  const dayWord = ts => { const d = new Date(ts), n = new Date(), k = Math.round((new Date(d).setHours(0, 0, 0, 0) - new Date(n).setHours(0, 0, 0, 0)) / 864e5); return k === 0 ? 'Hoy' : k === 1 ? 'Mañana' : d.toLocaleDateString('es-VE', { weekday: 'long', day: 'numeric', month: 'long' }).replace(/^./, c => c.toUpperCase()); };
+  const range = (a, b) => `${dayWord(a)}, de ${hm(a)} a ${hm(b)}`;
   const dur = ms => { const s = Math.round(ms / 1e3); return s < 60 ? s + ' s' : s < 3600 ? Math.round(s / 60) + ' min' : (s / 3600).toFixed(1) + ' h'; };
 
   /* ---------- almacén ---------- */
@@ -49,7 +52,7 @@
   const persist = () => { for (let i = 0; i < 4; i++) { try { localStorage.setItem(KEY, JSON.stringify(S)); return; } catch (e) { const r = S.reports.find(x => x.photo); if (r) r.photo = null; else return; } } };
   const fire = ext => subs.forEach(f => f(S, ext));
   const commit = fn => { fn(S); persist(); fire(false); };
-  const load = () => { try { S = JSON.parse(localStorage.getItem(KEY)); } catch (e) { S = null; } if (!S || S.v !== 5) { S = A.seed(); persist(); } };
+  const load = () => { try { S = JSON.parse(localStorage.getItem(KEY)); } catch (e) { S = null; } if (!S || S.v !== 6) { S = A.seed(); persist(); } };
   window.addEventListener('storage', e => { if (e.key === KEY && e.newValue) { try { S = JSON.parse(e.newValue); fire(true); } catch (x) {} } });
   const note = (s, to, txt, link, svc) => { s.notifs.unshift({ id: uid('n'), to, txt, link, svc, ts: now(), read: false }); s.notifs.length = Math.min(s.notifs.length, 80); };
   const cname = (s, id) => (find(s.contractors, id) || {}).name || 'Contratista';
@@ -84,6 +87,8 @@
     unitSet(id, status) { commit(s => { const u = find(s.units, id); if (u) u.status = status; }); },
     serviceSet(id, p) { commit(s => { const x = find(s.services, id); if (!x) return; Object.assign(x, p, { ts: now() }); note(s, 'ciudadano', `${x.n}: ${A.SVC[x.status][0].toLowerCase()}${x.status !== 'ok' && x.sectors && x.sectors.length ? ' en ' + x.sectors.join(', ') : ''}. ${x.note}`, '#/ciudadano/ciudad/servicios', x.id); }); },
     beachSet(id, p) { commit(s => { const x = find(s.beaches, id); if (!x) return; Object.assign(x, p, { ts: now() }); note(s, 'ciudadano', `${x.n}: ${A.BEACH[x.status][0].toLowerCase()}. ${x.note}`, '#/ciudadano/ciudad/servicios'); }); },
+    outageAdd(d) { commit(s => { s.outages.push({ id: uid('o'), ...d }); const n = { luz: 'Corte de luz', agua: 'Corte de agua' }[d.svc]; note(s, 'ciudadano', `${n} programado en ${d.sector}: ${range(d.from, d.to).toLowerCase()}. ${d.note}`, '#/ciudadano/ciudad/servicios', d.svc); }); },
+    outageRemove(id) { commit(s => { const o = find(s.outages, id); if (!o) return; s.outages = s.outages.filter(x => x.id !== id); note(s, 'ciudadano', `Se canceló el corte de ${o.svc} programado en ${o.sector}.`, '#/ciudadano/ciudad/servicios'); }); },
     profile(d) { commit(s => { Object.assign(s.me, d); }); },
     readAll(to) { if (S.notifs.some(n => n.to === to && !n.read)) commit(s => s.notifs.forEach(n => { if (n.to === to) n.read = true; })); },
     reset() { S = A.seed(); persist(); fire(false); }
@@ -111,6 +116,7 @@
   const toast = t => { $$('.toast').forEach(x => x.remove()); const d = document.createElement('div'); d.className = 'toast'; d.setAttribute('role', 'status'); d.textContent = t; document.body.append(d); setTimeout(() => d.classList.add('out'), 2800); setTimeout(() => d.remove(), 3300); };
   const closeModal = () => { const m = $('.modal'); if (m) m.remove(); };
   on.close = closeModal;
+  on.skip = () => { const m = document.getElementById('main'); if (m) { m.setAttribute('tabindex', '-1'); m.focus(); } };
   const modal = (html, cls = '') => { closeModal(); const d = document.createElement('div'); d.className = 'modal ' + cls; d.innerHTML = `<div class="modal-box" role="dialog" aria-modal="true"><button class="modal-x" data-act="close" aria-label="Cerrar">${ic('x')}</button>${html}</div>`; d.addEventListener('mousedown', e => { if (e.target === d) closeModal(); }); document.body.append(d); return d; };
   const beep = () => { try { const C = window.AudioContext || window.webkitAudioContext, c = new C(), g = c.createGain(); g.connect(c.destination); [0, .22, .44].forEach(t => { const o = c.createOscillator(); o.type = 'square'; o.frequency.value = 880; o.connect(g); g.gain.setValueAtTime(.06, c.currentTime + t); o.start(c.currentTime + t); o.stop(c.currentTime + t + .14); }); setTimeout(() => c.close(), 900); } catch (e) {} };
   const chip = (k, txt) => `<span class="chip chip-${k}">${esc(txt)}</span>`;
@@ -138,6 +144,14 @@
   const tone = (map, k) => (map[k] || ['', 'ok'])[1];
   const st = (map, k) => { const [n, t] = map[k] || ['—', 'ok']; return `<span class="st st-${t}">${ic(t === 'ok' ? 'check' : t === 'warn' ? 'alert' : 'x', 15)}${esc(n)}</span>`; };
 
+  /* ---------- «Escuchar»: lectura en voz alta para quien prefiere oír ---------- */
+  const canSpeak = 'speechSynthesis' in window;
+  const say = (text, label = 'Escuchar') => canSpeak ? `<button class="say" data-act="say" data-text="${esc(text)}" aria-label="${esc(label)}: ${esc(text.slice(0, 60))}">${ic('sound', 18)}<span>${esc(label)}</span></button>` : '';
+  on.say = el => { const ss = window.speechSynthesis, was = el.classList.contains('on'); ss.cancel(); $$('.say.on').forEach(b => { b.classList.remove('on'); b.querySelector('span').textContent = 'Escuchar'; });
+    if (was) return; const u = new SpeechSynthesisUtterance(el.dataset.text), v = ss.getVoices().find(x => /^es(-VE|-US|-MX|-419)?/i.test(x.lang)); u.lang = v ? v.lang : 'es-VE'; if (v) u.voice = v; u.rate = .92;
+    u.onend = u.onerror = () => { el.classList.remove('on'); const sp = el.querySelector('span'); if (sp) sp.textContent = 'Escuchar'; }; el.classList.add('on'); el.querySelector('span').textContent = 'Detener'; ss.speak(u); };
+  window.addEventListener('hashchange', () => { if (canSpeak) window.speechSynthesis.cancel(); });
+
   /* ---------- enrutador ---------- */
   let lastRoute = '', pending = false;
   const parts = () => location.hash.replace(/^#\/?/, '').split('?')[0].split('/').filter(Boolean).map(decodeURIComponent);
@@ -162,6 +176,6 @@
   const netBar = () => online() ? '' : `<div class="net-bar" role="status">${ic('off', 20)}<span><b>Sin conexión.</b> Puedes seguir usando la app: lo que envíes se guarda y sale solo cuando vuelva la señal.</span><a href="#/ciudadano/wifi">WiFi cerca</a></div>`;
   A.boot = () => { load(); document.documentElement.classList.toggle('is-off', !online()); subs.push((s, ext) => { const v = parts()[0] || 'inicio'; if ((v === 'inicio' || v === 'demo') && lastRoute === location.hash) { if (A.tour) A.tour.sync(); return; } if (ext && busy()) { pending = true; return; } render(); }); window.addEventListener('hashchange', render); render();
     if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) navigator.serviceWorker.register('sw.js').catch(() => {}); };
-  Object.assign(A, { online, netType, netBar, setPref, swRow: sw, $, $$, esc, ic, qiu, ago, fdt, fday, flong, greet, money, dur, aa, st, tone, prefs, find, uid, now, act, locate, fakeLoc, readPhoto, map, toast, modal, closeModal, beep, chip, timeline, log, credit, bell, views, on, go, render, subs, EMBED });
+  Object.assign(A, { say, hm, range, dayWord, online, netType, netBar, setPref, swRow: sw, $, $$, esc, ic, qiu, ago, fdt, fday, flong, greet, money, dur, aa, st, tone, prefs, find, uid, now, act, locate, fakeLoc, readPhoto, map, toast, modal, closeModal, beep, chip, timeline, log, credit, bell, views, on, go, render, subs, EMBED });
   Object.defineProperty(A, 'S', { get: () => S });
 })();
