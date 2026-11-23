@@ -264,5 +264,5 @@ G.alc.panel = S => { const o = panel0(S), n = tram(A.S).filter(t => !t.queued &&
 const banner = `<section class="cx-banner">${ph('canales', '', 1280, true, false)}<div class="cx-banner-tx"><p>Lechería hoy · ${A.flong()}</p><h2>Capital turística de Anzoátegui</h2><div class="cx-wx" data-wx="chips">${wxChips()}</div><p class="cx-sea" data-wx="sea">${seaLine()}</p></div><div class="cx-banner-side"><a href="#/alcaldia/atencion">${ic('users', 22)}<span><b>${n}</b> ${n === 1 ? 'solicitud nueva' : 'solicitudes nuevas'} de vecinos</span>${ic('arrow', 18)}</a><a href="#/alcaldia/servicios">${ic('wave', 22)}<span><b>${S.beaches.filter(b => b.status === 'abierta').length} de ${S.beaches.length}</b> playas abiertas</span>${ic('arrow', 18)}</a><a href="#/alcaldia/servicios">${ic('wifi', 22)}<span><b>${S.wifi.filter(w => w.status !== 'caido').length} de ${S.wifi.length}</b> puntos WiFi activos</span>${ic('arrow', 18)}</a></div>${credit('canales')}</section>`;
 o.html = o.html.replace('<section class="dash-hello">', banner + '<section class="dash-hello">'); const af = o.after; o.after = el => { if (af) af(el); refreshWx(); }; return o; };
 }
-Object.assign(A, { PH, ph, phUrl, wxChips, seaLine, sun, tram, refreshWx });
+Object.assign(A, { PH, ph, phUrl, wxChips, seaLine, sun, tram, refreshWx, atc: { create: atcCreate, set: atcSet } });
 })();
