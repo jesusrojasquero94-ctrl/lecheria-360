@@ -5,7 +5,9 @@
     ['ciudadano', 'user', 'Ciudadano', 'Vecinos y visitantes', 'SOS, reportes con foto, noticias, eventos, obras y vialidad desde el teléfono.'],
     ['seguridad', 'shield', 'Seguridad y Protección Civil', 'Operadores y unidades', 'Recibe las alertas SOS en el mapa, despacha la unidad más cercana y publica sucesos verificados.'],
     ['alcaldia', 'chart', 'Alcaldía', 'Direcciones y prensa', 'Gestiona reportes, publica noticias, eventos y avisos, y contrata obras con trazabilidad.'],
-    ['contratista', 'case', 'Contratistas y aliados', 'Empresas y patrocinantes', 'Recibe solicitudes de obras, servicios y eventos, cotiza y reporta avances con evidencia.']
+    ['contratista', 'case', 'Contratistas y aliados', 'Empresas y patrocinantes', 'Recibe solicitudes de obras, servicios y eventos, cotiza y reporta avances con evidencia.'],
+    ['agentes', 'house', 'Agentes inmobiliarios · MLS', 'Agentes verificados', 'Inventario compartido con comisión compartida, interesados y reservas de hospedaje.'],
+    ['camara', 'badge', 'Cámara Inmobiliaria', 'Verificación', 'Verifica agentes e inmuebles antes de que aparezcan en la app de vecinos y visitantes.']
   ];
   const MODS = [
     ['shield', 'Seguridad', 'Botón de pánico SOS con ubicación. La alerta llega en segundos al operador de turno y a Protección Civil.'],
@@ -16,6 +18,7 @@
     ['city', 'Estado de la ciudad', 'Agua, luz, aseo y playas con su estado del día. Si hay un corte en tu sector, te llega una alerta al teléfono.'],
     ['clock', 'Cortes programados', 'Horario de cortes de luz y agua por sector, con recordatorio 30 minutos antes para preparar la casa.'],
     ['siren', 'Emergencias sin internet', 'SMS con tu ubicación GPS, primeros auxilios, linterna y sirena: funciona aunque no haya datos móviles.'],
+['house', 'Hospedaje e inmuebles', 'Alquiler vacacional por fechas y compra o alquiler con agentes verificados por la Cámara Inmobiliaria.'],
 ['doc', 'Trámites y atención al ciudadano', 'Requisitos oficiales del Registro Civil y solicitudes a las 22 dependencias, con número de seguimiento.'],
 ['phone', 'Teléfonos útiles y «Escuchar»', 'Emergencias a un toque, aun sin internet, y lectura en voz alta de avisos y noticias para quien prefiere oír.'],
     ['wifi', 'WiFi público y sin conexión', 'Mapa de puntos WiFi gratis, con los que siguen funcionando en apagones. La app funciona sin internet y envía lo pendiente al volver la señal.'],
@@ -35,7 +38,7 @@
       <div class="btn-row"><button class="btn btn-sol btn-lg" data-act="tour">${ic('play', 18)} Iniciar recorrido guiado</button><a class="btn btn-glass btn-lg" href="#/demo">Ver la alerta viajar en vivo</a></div>
       <p class="hero-note">Propuesta de Qiu Agency para la Alcaldía de Lechería. Prototipo no oficial, con datos de demostración.</p></div>
       <div class="hero-phone" aria-hidden="true"><span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span><div class="phone"><iframe src="?embed=1#/ciudadano/inicio" title="App del ciudadano" loading="lazy" tabindex="-1" allow="geolocation"></iframe></div></div></section>
-    <section class="band" id="modulos"><h2>Qué resuelve para la ciudad</h2><p class="band-lead">Trece frentes que hoy viven en llamadas, grupos de mensajería y oficios, reunidos en un solo sistema pensado también para quienes tienen más de 50 años: letra grande, botones grandes y lenguaje claro.</p>
+    <section class="band" id="modulos"><h2>Qué resuelve para la ciudad</h2><p class="band-lead">Catorce frentes que hoy viven en llamadas, grupos de mensajería y oficios, reunidos en un solo sistema pensado también para quienes tienen más de 50 años: letra grande, botones grandes y lenguaje claro.</p>
       <dl class="mods">${MODS.map(m => `<div><dt>${ic(m[0], 22)}${m[1]}</dt><dd>${m[2]}</dd></div>`).join('')}</dl></section>
     <section class="band flow"><h2>El viaje de un reporte</h2><ol class="steps"><li><b>El vecino reporta</b><span>Foto, tipo de problema y ubicación en menos de un minuto.</span></li><li><b>La Alcaldía asigna</b><span>A la dirección responsable o a un contratista invitado a cotizar.</span></li><li><b>El contratista ejecuta</b><span>Cotiza, recibe la adjudicación y sube avances con fotos.</span></li><li><b>El vecino califica</b><span>Recibe el aviso de solución y evalúa la atención.</span></li></ol></section>
     <section class="band" id="portales"><h2>Cuatro portales, una sola ciudad</h2><p class="band-lead">Entra a cualquiera. Lo que hagas en uno se refleja al instante en los demás.</p>
@@ -77,6 +80,9 @@
     { run: () => { const w = A.S.works.find(w => w.request === d.req); act.workUpdate(w.id, { pct: 100, txt: 'Hueco reparado y canal demarcado.', photo: demoPhoto(true) }); }, go: () => '#/ciudadano/reportes/' + d.rep, sel: '.rate', t: 'El vecino recibe la solución y califica', x: 'El ciclo se cierra: el reporte queda resuelto, con su historial completo, y la calificación alimenta el indicador de satisfacción.' },
     { go: '#/ciudadano/ciudad/eventos', sel: '.evt', t: 'La vida de la ciudad en un solo lugar', x: 'Noticias, eventos, obras, vialidad y sucesos verificados. Los eventos con taquilla se conectan con Nightz para entradas y reservas.' },
     { go: '#/ciudadano/lecheria', sel: '.cx-cover', t: 'Conoce Lechería', x: 'Datos de la ciudad, el tiempo a tres días, lugares para visitar con fotos reales, su historia y las noticias oficiales de la Alcaldía.' },
+{ go: '#/ciudadano/hospedaje', sel: '.hx-card', t: 'Vacacionar en Lechería', x: 'Visitantes y vecinos reservan apartamentos, casas bote y posadas por fechas, con anfitriones verificados por la Cámara Inmobiliaria.' },
+{ run: () => { d.prop = A.inm.act.publish({ op: 'venta', tipo: 'Apartamento', title: 'Apartamento frente a los canales', sector: 'Playa Los Canales', price: 98000, m2: 95, hab: 2, banos: 2, guests: 4, cobroke: 50, amen: ['planta', 'estac', 'muelle'], catastro: true, desc: 'Piso 3 con balcón al canal, planta eléctrica y puesto de estacionamiento.', ph: 'canal2' }, 'ag1'); }, go: '#/camara/inmuebles', sel: '.hx-rev', t: 'La Cámara Inmobiliaria verifica', x: 'Un agente publicó un inmueble. Antes de mostrarse al público, la Cámara revisa documentos, ficha catastral, fotos y precio.' },
+{ run: () => { A.inm.act.review(d.prop, true, ''); }, go: '#/agentes/mls', sel: '.tbl tbody tr', t: 'Un MLS para todos los agentes', x: 'Aprobado: ya aparece en el inventario compartido. Todos los agentes verificados pueden ofrecerlo y compartir la comisión.' },
 { go: '#/ciudadano/tramites', sel: '.cx-tr-g', t: 'Trámites con requisitos oficiales', x: 'Los ocho trámites del Registro Civil con sus requisitos, impuestos, catastro, salud y ayudas, con buscador. Se consultan aunque no haya internet.' },
 { run: () => { d.atc = A.atc.create({ dept: 'Gerencia de Gestión Urbana', subj: 'Árbol que toca los cables', body: 'Un árbol frente a la panadería roza los cables de luz. Pido poda antes de las lluvias.' }); }, go: '#/alcaldia/atencion', sel: '.tbl tbody tr', t: 'El vecino escribe a la Alcaldía', x: 'Acabamos de enviar una solicitud a Gestión Urbana. Llega con número de seguimiento a «Atención al ciudadano», junto con las de las otras 21 dependencias.' },
 { run: () => { A.atc.set(d.atc, 'respondida', 'Una cuadrilla de poda irá el jueves en la mañana.'); }, go: '#/ciudadano/tramites/mis', sel: '.cx-ans', t: 'La respuesta llega al teléfono', x: 'La Alcaldía respondió y el vecino recibe la notificación. Ve la respuesta en «Mis casos», con fecha y dependencia.' },

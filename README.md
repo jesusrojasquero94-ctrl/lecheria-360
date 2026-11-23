@@ -22,9 +22,17 @@ La hoja de ruta completa está en [ROADMAP.md](ROADMAP.md).
 | Contratistas | `#/contratista` | Empresas y aliados privados | Solicitudes de obras, servicios y eventos, cotización, avances con evidencia fotográfica |
 | Vista en vivo | `#/demo` | Presentación | Teléfono del vecino y consola de gestión en la misma pantalla |
 
-El **recorrido guiado** (botón en la portada y en cada portal) ejecuta el ciclo completo en 24 pasos:
+El **recorrido guiado** (botón en la portada y en cada portal) ejecuta el ciclo completo en 27 pasos:
 alerta SOS, despacho, reporte con foto, solicitud, cotización, adjudicación, avance, calificación,
 estado de la ciudad, WiFi y panel de la Alcaldía.
+
+## Novedades de la versión 3.1
+
+- **Hospedaje** (`#/ciudadano/hospedaje`): alquiler vacacional estilo Airbnb con filtros de fechas, huéspedes, zona, precio y servicios (planta eléctrica, tanque, playa, muelle), calendario de disponibilidad, solicitud de reserva y «Mis reservas».
+- **Comprar o alquilar** (`#/ciudadano/inmuebles`): inmuebles en venta y alquiler de agentes verificados, ficha catastral y contacto con el agente.
+- **Portal de agentes · MLS** (`#/agentes`): inventario compartido con comisión compartida, mis inmuebles, publicar (pasa por verificación), interesados y reservas.
+- **Cámara Inmobiliaria** (`#/camara`): verificación de inmuebles y de agentes, e indicadores del mercado (precio por m² por sector, tarifa media por noche, reservas).
+- Recorrido guiado de 27 pasos. La verificación de la Cámara Inmobiliaria es una integración propuesta; agentes, inmuebles y precios son de demostración.
 
 ## Novedades de la versión 3
 
@@ -33,7 +41,7 @@ estado de la ciudad, WiFi y panel de la Alcaldía.
 - **Conoce Lechería** (`#/ciudadano/lecheria`): datos de la ciudad, el tiempo a 3 días, ocho lugares con foto, historia según la crónica oficial, noticias oficiales y canales de la Alcaldía.
 - **Trámites y servicios** (`#/ciudadano/tramites`): los ocho trámites del Registro Civil con sus requisitos reales (lecheria.gov.ve), impuestos y declaración en línea, catastro y urbanismo, salud y ayudas sociales, ciudad limpia, deporte y cultura, con buscador. Directorio de las 22 dependencias y **«Escribir a la Alcaldía»** con número de seguimiento (sin señal, la solicitud sale sola al volver la conexión).
 - **Consola de la Alcaldía**: portada del panel con foto de la ciudad, clima y mar, playas y WiFi activos, y nueva sección **«Atención al ciudadano»** para responder las solicitudes; el vecino recibe la respuesta como notificación.
-- **Recorrido guiado de 24 pasos**: suma la nueva portada, Emergencias sin internet, Conoce Lechería, trámites y una solicitud a la Alcaldía con su respuesta.
+- **Recorrido guiado de 27 pasos**: suma la nueva portada, Emergencias sin internet, Conoce Lechería, trámites y una solicitud a la Alcaldía con su respuesta.
 - **Service worker v3**: guarda los nuevos módulos, las fotos ya vistas (40) y el último clima. Accesos directos de la app instalada: Emergencias, SOS, Reportar y Trámites.
 
 Fuentes: trámites, dependencias, historia y noticias de [lecheria.gov.ve](https://lecheria.gov.ve/); clima y mar de [Open-Meteo](https://open-meteo.com/); fotos de [Wikimedia Commons](https://commons.wikimedia.org/wiki/Category:Lecher%C3%ADa). Los números de Protección Civil y de la Policía Municipal quedan por cargar con los datos oficiales de la Alcaldía.
@@ -77,6 +85,7 @@ ciudadano.js            Portal del ciudadano
 gestion.js              Seguridad, Alcaldía y Contratistas
 ciudad.js               Inicio con la ciudad, Conoce Lechería, trámites y atención al ciudadano
 emergencia.js           Emergencias sin internet
+inmuebles.js            Hospedaje, compra y alquiler, portal MLS y Cámara Inmobiliaria
 ciudad.css              Estilos de la versión 3
 landing.js              Portada, vista en vivo y recorrido guiado
 sw.js                   Service worker: uso sin conexión, mapas guardados y notificaciones
