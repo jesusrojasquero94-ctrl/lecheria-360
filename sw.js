@@ -5,8 +5,8 @@ La app queda guardada en el teléfono y funciona sin internet, empezando por Eme
 - Fotos de la ciudad (Wikimedia Commons): las ya vistas quedan guardadas (máximo 40).
 - Clima y mar (Open-Meteo): red primero; sin señal, el último dato guardado.
 Las teselas de mapa ya vistas quedan disponibles sin conexión (máximo 600). */
-const C = 'lchc-v5', T = 'lchc-mapas-v1', F = 'lchc-fotos-v1', MAX_TILES = 600, MAX_FOTOS = 40;
-const SHELL = ['./', 'index.html', 'styles.css', 'ciudad.css', 'data.js', 'core.js', 'ciudadano.js', 'gestion.js', 'ciudad.js', 'emergencia.js', 'inmuebles.js', 'landing.js', 'icon.svg', 'manifest.webmanifest'];
+const C = 'lchc-v6', T = 'lchc-mapas-v1', F = 'lchc-fotos-v1', MAX_TILES = 600, MAX_FOTOS = 40;
+const SHELL = ['./', 'index.html', 'styles.css', 'ciudad.css', 'tema.css', 'data.js', 'core.js', 'ciudadano.js', 'gestion.js', 'ciudad.js', 'emergencia.js', 'inmuebles.js', 'landing.js', 'icon.svg', 'manifest.webmanifest'];
 const CDN = ['https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'];
 self.addEventListener('install', e => { self.skipWaiting(); e.waitUntil(caches.open(C).then(c => c.addAll(SHELL).then(() => Promise.all(CDN.map(u => fetch(u, { mode: 'no-cors' }).then(r => c.put(u, r)).catch(() => {}))))).catch(() => {})); });
 self.addEventListener('activate', e => e.waitUntil(caches.keys().then(k => Promise.all(k.filter(x => x !== C && x !== T && x !== F).map(x => caches.delete(x)))).then(() => self.clients.claim())));

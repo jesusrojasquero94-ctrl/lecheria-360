@@ -26,6 +26,10 @@ El **recorrido guiado** (botón en la portada y en cada portal) ejecuta el ciclo
 alerta SOS, despacho, reporte con foto, solicitud, cotización, adjudicación, avance, calificación,
 estado de la ciudad, WiFi y panel de la Alcaldía.
 
+## Novedades de la versión 3.2
+
+- **Marca y dashboard modernos** (`tema.css`): logotipo nuevo (sol sobre el mar), paleta caribe (océano, turquesa y sol), tipografía Plus Jakarta Sans, superficies con borde fino, barra de pestañas flotante en la app, riel con brillo turquesa y panel tipo «bento» en la consola, portadas con degradados y seis portales con color propio. El tema solo cambia la apariencia y respeta «Ver mejor» (alto contraste y menos movimiento).
+
 ## Novedades de la versión 3.1
 
 - **Hospedaje** (`#/ciudadano/hospedaje`): alquiler vacacional estilo Airbnb con filtros de fechas, huéspedes, zona, precio y servicios (planta eléctrica, tanque, playa, muelle), calendario de disponibilidad, solicitud de reserva y «Mis reservas».
@@ -87,6 +91,7 @@ ciudad.js               Inicio con la ciudad, Conoce Lechería, trámites y aten
 emergencia.js           Emergencias sin internet
 inmuebles.js            Hospedaje, compra y alquiler, portal MLS y Cámara Inmobiliaria
 ciudad.css              Estilos de la versión 3
+tema.css                Tema 2027: marca y dashboard modernos
 landing.js              Portada, vista en vivo y recorrido guiado
 sw.js                   Service worker: uso sin conexión, mapas guardados y notificaciones
 ROADMAP.md              Hoja de ruta por fases
