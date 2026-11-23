@@ -1,0 +1,64 @@
+/* Lechería Conecta · tema 2027: marca y dashboard modernos.
+Se carga después de los demás estilos y solo cambia la apariencia: paleta caribe (océano, turquesa y sol),
+tipografía Plus Jakarta Sans, logotipo nuevo, superficies con borde fino, barra de pestañas flotante
+y panel tipo «bento». El contraste se mantiene AA y respeta «Menos movimiento». */
+:root{--navy:#071C2C;--navy2:#0B2F4A;--mar:#13A9C8;--mar-d:#0B6FA4;--mar-l:#E7F6FB;--sol:#FFB020;--sol-d:#8A5A00;--sol-l:#FFF4DC;--sos:#EF4452;--sos-d:#C21F35;--sos-l:#FDECEE;--ok:#0E8A5F;--ok-l:#E3F6EE;--ink:#0F1E2D;--mut:#566778;--line:#E2E8EF;--bg:#F3F6FA;--card:#fff;--r:18px;--rs:12px;--sh:0 1px 1px rgba(7,28,44,.04),0 10px 28px -14px rgba(7,28,44,.22);--fd:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--fb:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;--logo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230B6FA4'/%3E%3Cstop offset='1' stop-color='%2313C2D9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ccircle cx='43' cy='21' r='8' fill='%23FFB020'/%3E%3Cpath d='M11 39c6 0 6-5 12-5s6 5 12 5 6-5 12-5 6 4 6 4' fill='none' stroke='%23fff' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M11 50c6 0 6-5 12-5s6 5 12 5 6-5 12-5 6 4 6 4' fill='none' stroke='%23fff' stroke-opacity='.55' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E")}
+body{font-family:var(--fb);letter-spacing:-.005em;background:var(--bg)}
+h1,h2,h3,h4{font-family:var(--fd);letter-spacing:-.02em}
+/* marca */
+.wordmark{display:inline-flex;align-items:center;gap:9px;font:800 1.12rem var(--fd);letter-spacing:-.03em}
+.wordmark::before{content:'';flex:none;width:30px;height:30px;border-radius:9px;background:var(--logo) center/cover no-repeat;box-shadow:0 6px 14px -6px rgba(11,111,164,.7)}
+.wordmark b{background:linear-gradient(90deg,var(--mar-d),var(--mar));-webkit-background-clip:text;background-clip:text;color:transparent}
+.rail .wordmark b,.hero .wordmark b,.demo-h .wordmark b,.top .wordmark b{background:linear-gradient(90deg,#5FD4E8,var(--sol));-webkit-background-clip:text;background-clip:text;color:transparent}
+/* superficies: borde fino y sombra suave */
+.card,.kpi,.info-card,.row-card,.news-row,.quick a,.cx-grid a,.cx-tr,.em-list,.em-call,.cx-place-card,.hx-card,.hx-filters,.hx-agent,.cx-dir li,.em-meet,.em-num,.cx-social a,.cx-facts div,.svc-tile,.work-card,.evt{border:1px solid var(--line);box-shadow:0 1px 2px rgba(7,28,44,.04)}
+.em-911{border-color:var(--sos)}
+.cx-grid a,.hx-card,.cx-place-card,.work-card,.kpi,.portal{transition:transform .18s ease,box-shadow .18s ease}
+.cx-grid a:hover,.hx-card:hover,.cx-place-card:hover,.work-card:hover,.kpi:hover,.portal:hover{transform:translateY(-2px);box-shadow:var(--sh)}
+input,select,textarea{border-radius:12px}
+/* app del vecino */
+.cz-app{border-radius:36px;background:var(--bg);box-shadow:0 40px 80px -40px rgba(7,28,44,.55),0 0 0 1px var(--line)}
+.cz-top{background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid rgba(226,232,239,.9)}
+.cz-tabs{margin:0 10px calc(10px + env(safe-area-inset-bottom));padding:6px;border:1px solid var(--line);border-radius:24px;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 14px 34px -14px rgba(7,28,44,.4)}
+.cz-tabs a{border-radius:16px}
+.cz-tabs a.on{color:var(--mar-d);background:var(--mar-l)}
+.cx-gi{border-radius:14px;background:linear-gradient(135deg,var(--mar-l),#fff);border:1px solid #D2EEF6}
+.cx-hero{border-radius:26px}
+.sos-block{border-radius:24px;background:radial-gradient(circle at 15% 50%,rgba(239,68,82,.35),transparent 55%),linear-gradient(135deg,#071C2C,#0B2F4A)}
+.cx-emg{border-radius:18px;background:linear-gradient(135deg,#FDECEE,#FFF6F7)}
+/* consola: riel oscuro con brillo turquesa */
+.rail{background:radial-gradient(120% 50% at 0% 0%,rgba(19,169,200,.22),transparent 60%),radial-gradient(90% 40% at 100% 100%,rgba(255,176,32,.12),transparent 60%),linear-gradient(180deg,#071C2C,#041420);border-right:1px solid rgba(255,255,255,.06)}
+.rail nav a{border-radius:14px;transition:background .15s}
+.rail nav a:hover{background:rgba(255,255,255,.06)}
+.rail nav a.on{background:linear-gradient(135deg,var(--mar-d),var(--mar));color:#fff;box-shadow:0 10px 24px -12px rgba(19,169,200,.8)}
+.rail-role{color:#9FB6CA}
+.work{background:var(--bg)}
+.work-h h1{font-size:1.75rem;letter-spacing:-.03em}
+/* panel tipo bento */
+.kpis{gap:14px}
+.kpi{border-radius:20px;padding:18px 20px;background:linear-gradient(180deg,#fff,#FBFDFF)}
+.kpi b{font-size:2.05rem;letter-spacing:-.04em;line-height:1.05}
+.kpi-ic{border-radius:14px;background:linear-gradient(135deg,var(--mar-l),#fff);border:1px solid #D2EEF6}
+.dash-hello{border-radius:24px;background:radial-gradient(circle at 88% 18%,rgba(19,169,200,.4),transparent 42%),radial-gradient(circle at 6% 120%,rgba(255,176,32,.28),transparent 40%),linear-gradient(135deg,#071C2C,#0B3554)}
+.cx-banner{border-radius:24px}
+.cx-banner-side a{border-radius:14px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.card{border-radius:20px}
+/* portada y portales */
+.hero{background:radial-gradient(circle at 80% 10%,rgba(19,169,200,.35),transparent 40%),radial-gradient(circle at 0% 100%,rgba(255,176,32,.18),transparent 45%),linear-gradient(160deg,#071C2C 0%,#0B2F4A 60%,#0B3A5A 100%)}
+.portal{border-radius:22px;box-shadow:0 18px 40px -24px rgba(7,28,44,.6)}
+.p-ciudadano{background:linear-gradient(140deg,#0B6FA4,#0E8BB8)}
+.p-seguridad{background:linear-gradient(140deg,#B31B30,#D9364A)}
+.p-alcaldia{background:linear-gradient(140deg,#071C2C,#0B3554)}
+.p-contratista{background:linear-gradient(140deg,#FFB020,#FFC857)}
+.p-agentes{background:linear-gradient(140deg,#0A6E4C,#0E8A5F);color:#fff}
+.p-camara{background:linear-gradient(140deg,#3F33A0,#5546C4);color:#fff}
+@media (min-width:980px){.portals{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.btn{border-radius:14px}
+.btn-mar{background:linear-gradient(135deg,var(--mar-d),#0E86B8)}
+.btn-sol{background:linear-gradient(135deg,#FFB020,#FFC24D);color:#3B2600}
+/* accesibilidad */
+.hc .wordmark b{background:none;color:var(--mar-d)}
+.hc .rail .wordmark b,.hc .hero .wordmark b{color:#fff}
+.calm .cx-grid a,.calm .hx-card,.calm .cx-place-card,.calm .work-card,.calm .kpi,.calm .portal{transition:none}
+.calm .cx-grid a:hover,.calm .hx-card:hover,.calm .cx-place-card:hover,.calm .work-card:hover,.calm .kpi:hover,.calm .portal:hover{transform:none}
+@media (prefers-reduced-motion:reduce){.cx-grid a,.hx-card,.cx-place-card,.work-card,.kpi,.portal{transition:none}}
