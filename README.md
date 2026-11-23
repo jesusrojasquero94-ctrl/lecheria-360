@@ -22,9 +22,21 @@ La hoja de ruta completa está en [ROADMAP.md](ROADMAP.md).
 | Contratistas | `#/contratista` | Empresas y aliados privados | Solicitudes de obras, servicios y eventos, cotización, avances con evidencia fotográfica |
 | Vista en vivo | `#/demo` | Presentación | Teléfono del vecino y consola de gestión en la misma pantalla |
 
-El **recorrido guiado** (botón en la portada y en cada portal) ejecuta el ciclo completo en 18 pasos:
+El **recorrido guiado** (botón en la portada y en cada portal) ejecuta el ciclo completo en 24 pasos:
 alerta SOS, despacho, reporte con foto, solicitud, cotización, adjudicación, avance, calificación,
 estado de la ciudad, WiFi y panel de la Alcaldía.
+
+## Novedades de la versión 3
+
+- **Emergencias sin internet** (`#/ciudadano/emergencia`): llamada al 911 y a tu contacto, **SMS de emergencia con tu ubicación GPS** (el SMS usa la red celular y el GPS no necesita datos), opción de incluir la ficha médica y de dejar la alerta en cola para el Centro de Seguridad. Primeros auxilios (RCP, atragantamiento, sangrado, quemaduras, ahogamiento, aguamala, golpe de calor, convulsiones, infarto y ACV, fracturas, intoxicación), «¿Qué hacer si…?» (sismo, tsunami, lluvias, incendio, apagón, gas, oleaje y petróleo, robo, extravío), herramientas (linterna, señal SOS con luz, sirena y metrónomo de RCP), centros de salud, puntos de encuentro con distancia y dirección calculadas sin conexión, ficha médica y mochila de emergencia guardadas solo en el teléfono. El botón SOS ofrece el SMS cuando no hay señal.
+- **Nuevo inicio del ciudadano**: portada con **fotos reales de Lechería** (Wikimedia Commons, con autor y licencia), clima, amanecer y atardecer, estado del mar e índice UV, doce accesos directos y «Descubre Lechería».
+- **Conoce Lechería** (`#/ciudadano/lecheria`): datos de la ciudad, el tiempo a 3 días, ocho lugares con foto, historia según la crónica oficial, noticias oficiales y canales de la Alcaldía.
+- **Trámites y servicios** (`#/ciudadano/tramites`): los ocho trámites del Registro Civil con sus requisitos reales (lecheria.gov.ve), impuestos y declaración en línea, catastro y urbanismo, salud y ayudas sociales, ciudad limpia, deporte y cultura, con buscador. Directorio de las 22 dependencias y **«Escribir a la Alcaldía»** con número de seguimiento (sin señal, la solicitud sale sola al volver la conexión).
+- **Consola de la Alcaldía**: portada del panel con foto de la ciudad, clima y mar, playas y WiFi activos, y nueva sección **«Atención al ciudadano»** para responder las solicitudes; el vecino recibe la respuesta como notificación.
+- **Recorrido guiado de 24 pasos**: suma la nueva portada, Emergencias sin internet, Conoce Lechería, trámites y una solicitud a la Alcaldía con su respuesta.
+- **Service worker v3**: guarda los nuevos módulos, las fotos ya vistas (40) y el último clima. Accesos directos de la app instalada: Emergencias, SOS, Reportar y Trámites.
+
+Fuentes: trámites, dependencias, historia y noticias de [lecheria.gov.ve](https://lecheria.gov.ve/); clima y mar de [Open-Meteo](https://open-meteo.com/); fotos de [Wikimedia Commons](https://commons.wikimedia.org/wiki/Category:Lecher%C3%ADa). Los números de Protección Civil y de la Policía Municipal quedan por cargar con los datos oficiales de la Alcaldía.
 
 ## Novedades de la versión 2
 
@@ -35,10 +47,19 @@ estado de la ciudad, WiFi y panel de la Alcaldía.
 - **Sin internet**: el service worker guarda la app, Leaflet, las tipografías y hasta 600 teselas de mapa ya vistas. Los reportes y las alertas SOS que se envían sin señal quedan guardados y salen solos al volver la conexión; mientras tanto se destaca la llamada al 911. En Perfil hay un interruptor «Simular sin conexión» para la demostración.
 - **Accesibilidad para mayores de 50**: letra base de 17 px, botón «Ver mejor» (Normal, Grande o Muy grande, alto contraste y menos movimiento) guardado en el dispositivo, áreas táctiles de 48 px, estados siempre con palabra e icono, y contraste AA revisado.
 
+## Novedades de la versión 2.1
+
+- **Cortes programados**: la Alcaldía programa cortes de luz o agua por sector, día y hora. El vecino del sector lo ve en su inicio («Hoy en tu sector») y recibe un recordatorio 30 minutos antes.
+- **Escuchar**: botón de lectura en voz alta en avisos de servicios, playas, cortes, noticias y el resumen «Así está Lechería hoy».
+- **Teléfonos útiles**: directorio que funciona sin internet. Solo el 911 es un número real; el resto se publica cuando la Alcaldía lo confirme.
+- **Panel de la Alcaldía**: encabezado fijo al desplazarse, ancho máximo cómodo en pantallas grandes, cuatro indicadores en una fila, columnas que terminan a la misma altura y cortes programados en «Estado de la ciudad».
+- **Accesibilidad**: 23 pantallas revisadas con axe-core (WCAG 2.2 AA y buenas prácticas) sin hallazgos; regiones de página, títulos en orden, enlace «Saltar al contenido» y contraste corregido en los botones de emergencia.
+- **Carga**: la hoja de estilos de los mapas ya no bloquea el primer dibujo de la página.
+
 ## Cómo funciona este prototipo
 
 - HTML, CSS y JavaScript sin dependencias de compilación. Mapas con Leaflet y OpenStreetMap.
-- Los datos se guardan en el navegador (`localStorage`, clave `lchc:v5`) y se sincronizan al instante entre pestañas
+- Los datos se guardan en el navegador (`localStorage`, clave `lchc:v6`) y se sincronizan al instante entre pestañas
   y ventanas del mismo navegador. Por eso un SOS enviado en una pestaña aparece en la consola abierta en otra.
 - La sincronización entre dispositivos distintos requiere el backend descrito en el plan del proyecto
   (API, base de datos, notificaciones push). `core.js` concentra todas las acciones de negocio para
@@ -54,6 +75,9 @@ data.js                 Catálogos y datos de demostración
 core.js                 Almacén, acciones de negocio, mapa, utilidades y enrutador
 ciudadano.js            Portal del ciudadano
 gestion.js              Seguridad, Alcaldía y Contratistas
+ciudad.js               Inicio con la ciudad, Conoce Lechería, trámites y atención al ciudadano
+emergencia.js           Emergencias sin internet
+ciudad.css              Estilos de la versión 3
 landing.js              Portada, vista en vivo y recorrido guiado
 sw.js                   Service worker: uso sin conexión, mapas guardados y notificaciones
 ROADMAP.md              Hoja de ruta por fases

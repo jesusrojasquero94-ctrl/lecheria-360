@@ -30,14 +30,26 @@ L360.ROADKINDS = { cierre: 'Cierre', desvio: 'Desvío', trafico: 'Tránsito lent
 /* Estado de la ciudad: [etiqueta, tono]. El tono nunca va solo: siempre lo acompaña la palabra y un icono. */
 L360.SVC = { ok: ['Normal', 'ok'], parcial: ['Con fallas', 'warn'], corte: ['Interrumpido', 'bad'] };
 L360.WIFI = { activo: ['Funcionando', 'ok'], lento: ['Lento', 'warn'], caido: ['Sin servicio', 'bad'] };
+/* Teléfonos útiles. Solo el 911 es un número real; los demás se cargan cuando la Alcaldía los confirme. */
+L360.PHONES = [
+  { n: 'Emergencias (VEN 911)', d: 'Policía, ambulancia y bomberos', num: '911', i: 'alert', urgent: true },
+  { n: 'Policía Municipal de Urbaneja', d: 'Seguridad en la ciudad', num: null, i: 'shield' },
+  { n: 'Protección Civil de Urbaneja', d: 'Rescate, inundaciones, playas', num: null, i: 'cross' },
+  { n: 'Bomberos', d: 'Incendios y rescates', num: null, i: 'flame' },
+  { n: 'Atención al Ciudadano (Alcaldía)', d: 'Reportes, trámites y dudas', num: null, i: 'users' },
+  { n: 'Hidrocaribe', d: 'Fallas del servicio de agua', num: null, i: 'drop' },
+  { n: 'Corpoelec', d: 'Fallas del servicio eléctrico', num: null, i: 'bolt' }
+];
 L360.BEACH = { abierta: ['Abierta', 'ok'], precaucion: ['Precaución', 'warn'], cerrada: ['Cerrada', 'bad'] };
 
 L360.seed = function () {
   const H = 3600e3, D = 24 * H, t = Date.now();
   const day = n => new Date(t + n * D).toISOString().slice(0, 10);
+  const clock = (dayOff, h) => { const d = new Date(t + dayOff * D); d.setHours(h, 0, 0, 0); return d.getTime(); };
+  const soon = Math.ceil(t / H) * H + 2 * H;
   const S = L360.SECTORS, at = (s, dx = 0, dy = 0) => ({ sector: s, lat: S[s][0] + dx, lng: S[s][1] + dy });
   return {
-    v: 5, seq: { rep: 1046, sos: 212, req: 31 },
+    v: 6, seq: { rep: 1046, sos: 212, req: 31 },
     me: { name: 'María González', phone: '0414 555 0101', sector: 'Casco Central', contact: 'Luis González · 0424 555 0102' },
     sos: [
       { id: 'SOS-211', type: 'medica', name: 'Carlos Rivas', phone: '0412 555 0144', ...at('Playa Lido', .0008), ts: t - 26 * H, status: 'atendida', unit: 'u4', op: 'Op. Andrea Salazar', t1: t - 26 * H + 40e3, t2: t - 26 * H + 95e3, t3: t - 26 * H + 11 * 60e3,
@@ -114,6 +126,11 @@ L360.seed = function () {
       { id: 'b1', n: 'Playa Lido', status: 'abierta', note: 'Bandera verde. Salvavidas de 8:00 a. m. a 5:00 p. m.', ts: t - 2 * H },
       { id: 'b2', n: 'Playa Los Canales', status: 'precaucion', note: 'Oleaje moderado. Báñate solo frente a la torre de salvavidas.', ts: t - 4 * H },
       { id: 'b3', n: 'Playa Cangrejo', status: 'cerrada', note: 'Cerrada de forma preventiva por manchas de hidrocarburo en la orilla. Protección Civil vigila la costa.', ts: t - 6 * H }
+    ],
+    outages: [
+      { id: 'o1', svc: 'luz', sector: 'Casco Central', from: soon, to: soon + 2 * H, note: 'Mantenimiento de la subestación. Desconecta neveras y equipos antes del corte.' },
+      { id: 'o2', svc: 'agua', sector: 'Pueblo Viejo', from: clock(1, 8), to: clock(1, 12), note: 'Trabajos en la tubería principal. Almacena agua la noche anterior.' },
+      { id: 'o3', svc: 'luz', sector: 'Las Villas', from: clock(2, 9), to: clock(2, 11), note: 'Sustitución de un transformador por la cuadrilla municipal.' }
     ],
     wifi: [
       { id: 'wf1', n: 'Plaza Bolívar de Lechería', ...at('Casco Central', .0004, -.0003), status: 'activo', power: true, hours: 'Todo el día', yes: 41, no: 3 },

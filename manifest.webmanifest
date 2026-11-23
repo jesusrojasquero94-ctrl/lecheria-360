@@ -1,7 +1,7 @@
 {
   "name": "Lechería Conecta",
   "short_name": "Lechería Conecta",
-  "description": "Sistema Integral de Gestión Urbana de Lechería: SOS, reportes, agua, luz, playas, WiFi, vialidad, obras, eventos y noticias. Funciona sin internet.",
+  "description": "Sistema Integral de Gestión Urbana de Lechería: SOS y emergencias sin internet, trámites, reportes, agua, luz, playas, WiFi, vialidad, obras, eventos y noticias.",
   "lang": "es",
   "start_url": "./#/ciudadano/inicio",
   "scope": "./",
@@ -21,6 +21,57 @@
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Emergencias",
+      "short_name": "Emergencias",
+      "description": "SMS con tu ubicación, primeros auxilios y linterna, sin internet",
+      "url": "./#/ciudadano/emergencia",
+      "icons": [
+        {
+          "src": "icon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Botón SOS",
+      "short_name": "SOS",
+      "url": "./#/ciudadano/sos",
+      "icons": [
+        {
+          "src": "icon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Reportar un problema",
+      "short_name": "Reportar",
+      "url": "./#/ciudadano/reportar",
+      "icons": [
+        {
+          "src": "icon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Trámites y servicios",
+      "short_name": "Trámites",
+      "url": "./#/ciudadano/tramites",
+      "icons": [
+        {
+          "src": "icon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
     }
   ]
 }
