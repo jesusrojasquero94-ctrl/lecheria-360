@@ -293,7 +293,7 @@ Usa la misma paleta de styles.css. Áreas táctiles de 48 px y textos legibles s
 .vx-head h2{font-size:1.15rem}
 .vx-head p{color:var(--mut);font-size:.88rem;margin-top:2px}
 .vx-list{display:grid;gap:8px}
-.vx-item{display:grid;grid-template-columns:62px 34px 1fr;align-items:center;gap:8px;padding:10px 12px;background:#fff;border:1px solid var(--line);border-radius:16px;text-decoration:none;color:var(--ink)}
+.vx-item{display:grid;grid-template-columns:76px 34px 1fr;align-items:center;gap:8px;padding:10px 12px;background:#fff;border:1px solid var(--line);border-radius:16px;text-decoration:none;color:var(--ink)}
 .vx-item time{font:700 .78rem var(--fd);color:var(--mar-d)}
 .vx-ic{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:var(--mar-l);color:var(--mar-d)}
 .vx-item span:last-child{display:grid;gap:1px;min-width:0}
