@@ -232,3 +232,57 @@ Usa la misma paleta de styles.css. Áreas táctiles de 48 px y textos legibles s
 .calm .cx-dots button::before,.calm .cx-tr summary .ic{transition:none}
 @media (prefers-reduced-motion:reduce){.em-beat.go{animation:none}}
 .embed .cx-banner{display:none}
+
+/* ---------- hospedaje e inmuebles (inmuebles.js) ---------- */
+.hx-home{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hx-home a{position:relative;display:block;min-height:150px;border-radius:var(--r);overflow:hidden;color:#fff;text-decoration:none;box-shadow:var(--sh)}
+.hx-home .ph{position:absolute;inset:0}
+.hx-home a::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,33,51,0) 30%,rgba(10,33,51,.85))}
+.hx-home span{position:absolute;z-index:1;left:12px;right:12px;bottom:10px;display:grid;gap:2px}
+.hx-home b{font:700 .95rem var(--fd)}
+.hx-home small{font-size:.76rem;opacity:.92}
+.hx-hero{position:relative;min-height:170px;border-radius:22px;overflow:hidden;color:#fff;box-shadow:var(--sh)}
+.hx-hero .ph{position:absolute;inset:0}
+.hx-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,33,51,.1),rgba(10,33,51,.85))}
+.hx-hero>div{position:absolute;z-index:1;left:16px;right:16px;bottom:14px;display:grid;gap:4px}
+.hx-hero h2{color:#fff;font-size:1.3rem}
+.hx-hero p{font-size:.86rem}
+.hx-filters{display:grid;gap:8px;padding:14px;background:#fff;border-radius:var(--r);box-shadow:var(--sh)}
+.hx-filters label{display:grid;gap:4px;font:600 .78rem var(--fd);color:var(--mut)}
+.hx-filters input,.hx-filters select{min-height:44px}
+.hx-chips{display:flex;flex-wrap:wrap;gap:6px}
+.hx-bar{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.hx-list{display:grid;gap:14px}
+.hx-card{display:block;background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);text-decoration:none;color:var(--ink)}
+.hx-ph{position:relative}
+.hx-ph .ph,.hx-card>.ph{height:170px}
+.hx-ph small{position:absolute;left:8px;top:8px;padding:2px 8px;border-radius:999px;background:rgba(10,33,51,.62);color:#fff;font-size:.66rem}
+.hx-body{display:grid;gap:5px;padding:12px 14px 14px}
+.hx-body small{color:var(--mut);font-size:.76rem}
+.hx-body h3{font-size:1rem;color:var(--navy)}
+.hx-meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px;color:var(--mut);font-size:.82rem}
+.hx-meta .ic{vertical-align:-3px}
+.hx-amen{display:flex;flex-wrap:wrap;gap:6px}
+.hx-amen span{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:999px;background:var(--bg);font-size:.72rem;color:var(--navy)}
+.hx-price{font:800 1.05rem var(--fd);color:var(--navy)}
+.hx-price.big{font-size:1.4rem}
+.hx-ver{justify-self:start;display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;background:var(--ok-l);color:var(--ok);font:700 .72rem var(--fd)}
+.hx-detail{display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
+.hx-detail>.hx-ph .ph,.hx-detail>.ph{height:220px;border-radius:var(--r)}
+.hx-detail h2{font-size:1.3rem}
+.hx-detail h3{font-size:1rem;margin-top:4px}
+.hx-amen-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.hx-amen-list li{display:flex;align-items:center;gap:6px;font-size:.88rem}
+.hx-cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.hx-cal span{display:grid;place-items:center;min-height:36px;border-radius:8px;background:var(--ok-l);color:var(--ok);font:700 .8rem var(--fd)}
+.hx-cal span.off{background:var(--bg);color:var(--mut);text-decoration:line-through}
+.hx-book h3 small{font:400 .8rem var(--fb);color:var(--mut)}
+.hx-agent{display:flex;align-items:center;gap:10px;padding:12px;background:#fff;border-radius:var(--r);box-shadow:var(--sh)}
+.hx-agent span{flex:1;display:grid}
+.hx-agent small{color:var(--mut);font-size:.78rem}
+.hx-map{height:280px}
+.hx-warn{color:var(--sos-d)}
+.hx-mine .hx-ph .ph,.hx-rev .hx-ph .ph,.hx-mine>.ph,.hx-rev>.ph{height:150px;border-radius:var(--rs);margin-bottom:8px}
+.hx-check{list-style:none;margin:8px 0;padding:0;display:grid;gap:4px;font-size:.86rem}
+.hx-check li{display:flex;gap:6px;align-items:center}
+.hc .hx-card,.hc .hx-filters,.hc .hx-agent{border:2px solid var(--ink)}
