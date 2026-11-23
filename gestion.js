@@ -119,6 +119,8 @@
       <form class="form card" data-form="contractor"><h2>Registrar proveedor</h2><p class="lead">Al registrarlo podrá recibir solicitudes de obras, servicios y eventos.</p><label>Razón social<input name="name" required></label><label>Especialidad<input name="spec" required></label><label>Persona de contacto<input name="contact" required></label><button class="btn btn-mar">Registrar</button></form></div>`); }
   };
   views.alcaldia = p => (alc[p[0]] || alc.panel)(vis(A.S));
+/* ciudad.js amplía la consola: portada de la ciudad y «Atención al ciudadano». */
+A.gx = { alc, ROLES, shell, kpi };
   on.rf = el => { rf = el.dataset.k; A.render(); };
   on.rfGo = el => { rf = el.dataset.k; };
   on.ptGo = el => { pt = el.dataset.k; };
