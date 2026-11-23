@@ -26,6 +26,17 @@ El **recorrido guiado** (botón en la portada y en cada portal) ejecuta el ciclo
 alerta SOS, despacho, reporte con foto, solicitud, cotización, adjudicación, avance, calificación,
 estado de la ciudad, WiFi y panel de la Alcaldía.
 
+## Novedades de la versión 3
+
+- **Emergencias sin internet** (`#/ciudadano/emergencia`): llamada al 911 y a tu contacto, **SMS de emergencia con tu ubicación GPS** (el SMS usa la red celular y el GPS no necesita datos), opción de incluir la ficha médica y de dejar la alerta en cola para el Centro de Seguridad. Primeros auxilios (RCP, atragantamiento, sangrado, quemaduras, ahogamiento, aguamala, golpe de calor, convulsiones, infarto y ACV, fracturas, intoxicación), «¿Qué hacer si…?» (sismo, tsunami, lluvias, incendio, apagón, gas, oleaje y petróleo, robo, extravío), herramientas (linterna, señal SOS con luz, sirena y metrónomo de RCP), centros de salud, puntos de encuentro con distancia y dirección calculadas sin conexión, ficha médica y mochila de emergencia guardadas solo en el teléfono. El botón SOS ofrece el SMS cuando no hay señal.
+- **Nuevo inicio del ciudadano**: portada con **fotos reales de Lechería** (Wikimedia Commons, con autor y licencia), clima, amanecer y atardecer, estado del mar e índice UV, doce accesos directos y «Descubre Lechería».
+- **Conoce Lechería** (`#/ciudadano/lecheria`): datos de la ciudad, el tiempo a 3 días, ocho lugares con foto, historia según la crónica oficial, noticias oficiales y canales de la Alcaldía.
+- **Trámites y servicios** (`#/ciudadano/tramites`): los ocho trámites del Registro Civil con sus requisitos reales (lecheria.gov.ve), impuestos y declaración en línea, catastro y urbanismo, salud y ayudas sociales, ciudad limpia, deporte y cultura, con buscador. Directorio de las 22 dependencias y **«Escribir a la Alcaldía»** con número de seguimiento (sin señal, la solicitud sale sola al volver la conexión).
+- **Consola de la Alcaldía**: portada del panel con foto de la ciudad, clima y mar, playas y WiFi activos, y nueva sección **«Atención al ciudadano»** para responder las solicitudes; el vecino recibe la respuesta como notificación.
+- **Service worker v3**: guarda los nuevos módulos, las fotos ya vistas (40) y el último clima. Accesos directos de la app instalada: Emergencias, SOS, Reportar y Trámites.
+
+Fuentes: trámites, dependencias, historia y noticias de [lecheria.gov.ve](https://lecheria.gov.ve/); clima y mar de [Open-Meteo](https://open-meteo.com/); fotos de [Wikimedia Commons](https://commons.wikimedia.org/wiki/Category:Lecher%C3%ADa). Los números de Protección Civil y de la Policía Municipal quedan por cargar con los datos oficiales de la Alcaldía.
+
 ## Novedades de la versión 2
 
 - **Panel de la Alcaldía rediseñado**: saludo con el resumen del día en una frase, accesos rápidos, lista «Necesita su atención» con un botón por tarea, indicadores grandes (incluido el tiempo medio de solución), estado de la ciudad, sectores con más reportes y obras con fecha de entrega.
@@ -63,6 +74,9 @@ data.js                 Catálogos y datos de demostración
 core.js                 Almacén, acciones de negocio, mapa, utilidades y enrutador
 ciudadano.js            Portal del ciudadano
 gestion.js              Seguridad, Alcaldía y Contratistas
+ciudad.js               Inicio con la ciudad, Conoce Lechería, trámites y atención al ciudadano
+emergencia.js           Emergencias sin internet
+ciudad.css              Estilos de la versión 3
 landing.js              Portada, vista en vivo y recorrido guiado
 sw.js                   Service worker: uso sin conexión, mapas guardados y notificaciones
 ROADMAP.md              Hoja de ruta por fases
