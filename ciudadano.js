@@ -109,6 +109,8 @@
       <button class="set-row" data-act="reset">${ic('refresh')}<span><b>Reiniciar la demostración</b><small>Borra lo que hiciste y restaura los datos de ejemplo</small></span></button></section>${A.credit()}`); }
   };
   const mf = { rep: true, obra: true, via: true, wifi: true };
+/* Otros módulos (ciudad.js, emergencia.js) agregan o amplían pantallas del ciudadano. */
+A.cz = { pages, shell, repRow, newsRow, SOSMSG, live, svcTile, outCard, upcoming };
   views.ciudadano = p => (pages[p[0]] || pages.inicio)(p.slice(1), A.S);
 
   /* ---------- acciones ---------- */
